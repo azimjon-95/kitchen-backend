@@ -21,7 +21,9 @@ process.on("unhandledRejection", (e) => console.error("Unhandled rejection:", e)
 const app = express();
 const port = Number(process.env.PORT ?? 4000);
 const allowedOrigins = (process.env.CLIENT_ORIGIN ?? "http://localhost:5173").split(",")
-  .concat((process.env.ADMIN_ORIGIN ?? "http://localhost:5174").split(","));
+  .concat((process.env.ADMIN_ORIGIN ?? "http://localhost:5174").split(","))
+  // мобильные приложения (Capacitor/Ionic WebView): iOS — capacitor://localhost, Android — https://localhost
+  .concat(["capacitor://localhost", "ionic://localhost", "http://localhost", "https://localhost"]);
 
 app.disable("x-powered-by");
 app.set("trust proxy", 1); // за прокси (Render/Railway/nginx) — корректный IP для rate-limit
