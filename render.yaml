@@ -8,6 +8,11 @@ services:
     envVars:
       - key: MONGODB_URI
         sync: false            # строка подключения MongoDB Atlas
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: clean-kitchen-redis
+          property: connectionString
       - key: JWT_SECRET
         generateValue: true
       - key: CLIENT_ORIGIN
@@ -22,3 +27,9 @@ services:
         sync: false
       - key: COST_CURRENCY
         value: UZS
+
+  - type: keyvalue
+    name: clean-kitchen-redis
+    plan: free
+    ipAllowList: []          # доступ только из сервисов Render
+    maxmemoryPolicy: allkeys-lru

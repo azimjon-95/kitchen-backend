@@ -12,6 +12,15 @@ npm start                   # http://localhost:4000/api/health
 ```
 Разработка с автоперезапуском: `npm run dev`.
 
+## Redis
+Необязателен. Если задан `REDIS_URL`: публичные списки `GET /api/recipes` кэшируются на 60 с (заголовок `X-Cache: HIT/MISS`), любое изменение карточек сбрасывает кэш, лимиты запросов хранятся в Redis. Если Redis недоступен — сервер продолжает работать с MongoDB.
+
+## Синхронизация для офлайн-клиентов
+`GET /api/sync/recipes` — полный набор опубликованных карточек; `GET /api/sync/recipes?since=<serverTime>` — только изменённые и список `removedIds`. Мобильное приложение хранит всё на устройстве и при появлении интернета запрашивает только новое.
+
+## Всё сразу локально
+`docker compose up --build` — MongoDB + Redis + API (нужен `.env`).
+
 ## Деплой
 **Render:** New → Blueprint → этот репозиторий (`render.yaml`). Задайте `MONGODB_URI` (Atlas), `CLIENT_ORIGIN` (адрес клиента на Vercel), `ADMIN_EMAIL`, `ADMIN_PASSWORD`. `JWT_SECRET` сгенерируется сам. После первого запуска выполните `npm run seed:prod` в Shell (по желанию).
 

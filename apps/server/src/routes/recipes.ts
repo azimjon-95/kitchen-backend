@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { bumpRecipesVersion, cached } from "../services/cache.js";
 import { z } from "zod";
 import { Recipe } from "../models/Recipe.js";
 import { RecipeVersion } from "../models/RecipeVersion.js";
@@ -7,6 +8,12 @@ import { requireAuth, requireRoles, optionalAuth, type AuthRequest } from "../mi
 import { inferDepartmentSection } from "../data/kitchenTaxonomy.js";
 
 const router = Router();
+
+// любое успешное изменение рецептов сбрасывает кэш списков и sync
+router.use((req, res, next) => {
+  if (req.method !== "GET") res.on("finish", () => { if (res.statusCode < 400) void bumpRecipesVersion(); });
+  next();
+});
 
 const ingredient = z.object({
   name: z.string().trim().min(1).max(120),
@@ -46,7 +53,7 @@ function escapeRegex(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function toRecipe(item: any) {
+export function toRecipe(item: any) {
   return {
     id: String(item._id),
     name: item.name,
@@ -139,12 +146,19 @@ router.get("/", optionalAuth, async (req: AuthRequest, res, next) => {
     const page = Math.max(1, Number(req.query.page) || 1);
     const limit = Math.min(200, Math.max(1, Number(req.query.limit) || 50));
 
-    const [items, total] = await Promise.all([
-      Recipe.find(filter).sort({ updatedAt: -1 }).skip((page - 1) * limit).limit(limit).lean<any[]>(),
-      Recipe.countDocuments(filter)
-    ]);
-
-    res.json({ items: items.map(toRecipe), page, limit, total });
+    const load = async () => {
+      const [items, total] = await Promise.all([
+        Recipe.find(filter).sort({ updatedAt: -1 }).skip((page - 1) * limit).limit(limit).lean<any[]>(),
+        Recipe.countDocuments(filter)
+      ]);
+      return { items: items.map(toRecipe), page, limit, total };
+    };
+    // Публичные списки кэшируются в Redis на 60 с; для admin/manager (видят черновики) кэша нет
+    const isStaff = req.user?.role === "admin" || req.user?.role === "manager";
+    if (isStaff) return res.json(await load());
+    const { value, hit } = await cached(`recipes:list:${req.originalUrl}`, 60, load);
+    res.setHeader("X-Cache", hit ? "HIT" : "MISS");
+    res.json(value);
   } catch (e) {
     next(e);
   }

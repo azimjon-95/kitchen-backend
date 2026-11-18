@@ -1,0 +1,17 @@
+services:
+  mongo:
+    image: mongo:7
+    volumes: [mongo:/data/db]
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+  api:
+    build: .
+    ports: ["4000:4000"]
+    env_file: .env
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/clean-kitchen
+      REDIS_URL: redis://redis:6379
+    depends_on: [mongo, redis]
+volumes:
+  mongo:

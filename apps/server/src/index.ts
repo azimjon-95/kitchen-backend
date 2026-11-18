@@ -11,6 +11,12 @@ import categoryRoutes from "./routes/categories.js";
 import userRoutes from "./routes/users.js";
 import ocrRoutes from "./routes/ocr.js";
 import qrRoutes from "./routes/qr.js";
+import syncRoutes from "./routes/sync.js";
+import { redis, redisStatus } from "./services/cache.js";
+import { RedisStore } from "rate-limit-redis";
+
+// сбой Redis/сети не должен валить сервер
+process.on("unhandledRejection", (e) => console.error("Unhandled rejection:", e));
 
 const app = express();
 const port = Number(process.env.PORT ?? 4000);
@@ -21,13 +27,17 @@ app.disable("x-powered-by");
 app.set("trust proxy", 1); // за прокси (Render/Railway/nginx) — корректный IP для rate-limit
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json({ limit: "4mb" }));
-app.use("/api/auth/login", rateLimit({ windowMs: 15 * 60 * 1000, limit: 20, standardHeaders: true, legacyHeaders: false }));
-app.use("/api/ocr", rateLimit({ windowMs: 60 * 1000, limit: 10, standardHeaders: true, legacyHeaders: false }));
+const limiterStore = (prefix: string) => redis
+  ? { store: new RedisStore({ prefix: `ck:rl:${prefix}:`, sendCommand: (...args: string[]) => (redis as any).call(...args) }) }
+  : {};
+app.use("/api/auth/login", rateLimit({ windowMs: 15 * 60 * 1000, limit: 20, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("login") }));
+app.use("/api/ocr", rateLimit({ windowMs: 60 * 1000, limit: 10, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("ocr") }));
 
 app.get("/api/health", (_req, res) => res.json({
   status: "ok",
   service: "clean-kitchen-api",
   database: mongoose.connection.readyState === 1 ? "connected" : "not-connected",
+  redis: redisStatus(),
   timestamp: new Date().toISOString()
 }));
 
@@ -43,6 +53,7 @@ app.use("/api/categories", categoryRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/ocr", ocrRoutes);
 app.use("/api/qr", qrRoutes);
+app.use("/api/sync", syncRoutes);
 
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);
