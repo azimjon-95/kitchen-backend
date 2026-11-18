@@ -12,6 +12,7 @@ import userRoutes from "./routes/users.js";
 import ocrRoutes from "./routes/ocr.js";
 import qrRoutes from "./routes/qr.js";
 import syncRoutes from "./routes/sync.js";
+import voiceRoutes from "./routes/voice.js";
 import { redis, redisStatus } from "./services/cache.js";
 import { RedisStore } from "rate-limit-redis";
 
@@ -56,6 +57,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/ocr", ocrRoutes);
 app.use("/api/qr", qrRoutes);
 app.use("/api/sync", syncRoutes);
+app.use("/api/voice/transcribe", rateLimit({ windowMs: 60 * 1000, limit: 30, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("voice") }));
+app.use("/api/voice", voiceRoutes);
 
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);
