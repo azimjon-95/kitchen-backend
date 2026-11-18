@@ -12,7 +12,7 @@ const router = Router();
  */
 router.get("/:recipeId", optionalAuth, async (req: AuthRequest, res, next) => {
   try {
-    const recipe = await Recipe.findById(req.params.recipeId).select("_id name status").lean();
+    const recipe = await Recipe.findById(req.params.recipeId).select("_id name status").lean<any>();
     if (!recipe) return res.status(404).json({ error: "Карта не найдена" });
     if (recipe.status !== "published" && req.user?.role !== "admin" && req.user?.role !== "manager") {
       return res.status(404).json({ error: "Карта не найдена" });
@@ -44,7 +44,7 @@ router.get("/:recipeId", optionalAuth, async (req: AuthRequest, res, next) => {
  */
 router.get("/:recipeId/data", optionalAuth, async (req: AuthRequest, res, next) => {
   try {
-    const recipe = await Recipe.findById(req.params.recipeId).select("_id name status").lean();
+    const recipe = await Recipe.findById(req.params.recipeId).select("_id name status").lean<any>();
     if (!recipe) return res.status(404).json({ error: "Карта не найдена" });
 
     const baseUrl = process.env.CLIENT_ORIGIN?.split(",")[0] || "http://localhost:5173";

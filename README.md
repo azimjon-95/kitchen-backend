@@ -1,14 +1,31 @@
 # Clean Kitchen — backend
 
-Express + MongoDB (Mongoose) API из монорепозитория v12 (`apps/server`) и общий пакет `packages/shared`.
+Express + MongoDB (Mongoose) API: рецепты/техкарты, категории, пользователи (admin/manager/staff), QR-коды, OCR, история версий, импорт черновиков.
 
+## Запуск локально
 ```bash
-cd backend
-cp .env.example .env     # задайте JWT_SECRET, MONGODB_URI, ADMIN_*
+cp .env.example .env        # задайте MONGODB_URI, JWT_SECRET, ADMIN_*
 npm install
-npm run dev              # http://localhost:4000
+npm run build
+npm run seed                # 37 демо-карточек (повторный запуск безопасен)
+npm start                   # http://localhost:4000/api/health
+```
+Разработка с автоперезапуском: `npm run dev`.
+
+## Деплой
+**Render:** New → Blueprint → этот репозиторий (`render.yaml`). Задайте `MONGODB_URI` (Atlas), `CLIENT_ORIGIN` (адрес клиента на Vercel), `ADMIN_EMAIL`, `ADMIN_PASSWORD`. `JWT_SECRET` сгенерируется сам. После первого запуска выполните `npm run seed:prod` в Shell (по желанию).
+
+**Docker (любой сервер/Railway/Fly):**
+```bash
+docker build -t clean-kitchen-api .
+docker run -p 4000:4000 --env-file .env clean-kitchen-api
 ```
 
-Описание эндпоинтов — `docs/API.md`, архитектура — `docs/ARCHITECTURE.md`. Клиент (корень репозитория) подключается через `VITE_API_URL`.
+**Клиент:** в Vercel добавьте переменную `VITE_API_URL=https://<адрес-api>` (без `/api` на конце — см. README клиента) и пересоберите.
 
-> Код перенесён без изменений. При свежей установке зависимостей `npm run typecheck` может ругаться на типы Mongoose (`lean()` в `routes/qr.ts`, `routes/recipes.ts`) — это не связано с переносом; зафиксируйте версию `mongoose` или поправьте приведение типов.
+## Основные эндпоинты
+`GET /api/health` · `POST /api/auth/login` · `GET /api/recipes?limit=200` (опубликованные — публично) · `POST /api/recipes` · `POST /api/recipes/import-draft` (admin/manager, всегда `draft`) · `GET /api/qr/:id` · `GET /api/categories` · `/api/users`, `/api/ocr`. Подробнее — `docs/API.md`.
+
+## Безопасность
+- `.env` в git не хранится; смените `ADMIN_PASSWORD` после первого входа.
+- Вход ограничен rate-limit (20 попыток / 15 мин), OCR — 10 запросов в минуту.

@@ -137,10 +137,10 @@ router.get("/", optionalAuth, async (req: AuthRequest, res, next) => {
     }
 
     const page = Math.max(1, Number(req.query.page) || 1);
-    const limit = Math.min(100, Math.max(1, Number(req.query.limit) || 50));
+    const limit = Math.min(200, Math.max(1, Number(req.query.limit) || 50));
 
     const [items, total] = await Promise.all([
-      Recipe.find(filter).sort({ updatedAt: -1 }).skip((page - 1) * limit).limit(limit).lean(),
+      Recipe.find(filter).sort({ updatedAt: -1 }).skip((page - 1) * limit).limit(limit).lean<any[]>(),
       Recipe.countDocuments(filter)
     ]);
 
@@ -165,7 +165,7 @@ router.get("/smart-search", optionalAuth, async (req: AuthRequest, res, next) =>
       .select("name description category aliases ingredients status createdAt updatedAt yieldLabel steps version")
       .sort({ updatedAt: -1 })
       .limit(1000)
-      .lean();
+      .lean<any[]>();
 
     const items = candidates
       .map(item => ({ item, score: scoreRecipeSearch(q, item as any) }))
@@ -219,7 +219,7 @@ router.post("/import-draft", requireAuth, requireRoles("admin", "manager"), asyn
 // ─── Get one ────────────────────────────────────────────────────────────────
 router.get("/:id", optionalAuth, async (req: AuthRequest, res, next) => {
   try {
-    const item = await Recipe.findById(req.params.id).lean();
+    const item = await Recipe.findById(req.params.id).lean<any>();
     if (!item || (item.status !== "published" && req.user?.role !== "admin" && req.user?.role !== "manager")) {
       return res.status(404).json({ error: "Карта не найдена" });
     }
@@ -262,7 +262,7 @@ router.patch("/:id", requireAuth, requireRoles("admin", "manager"), async (req: 
       return res.status(400).json({ error: "Некорректные данные карты", details: parsed.error.flatten() });
     }
 
-    const existing = await Recipe.findById(req.params.id).lean();
+    const existing = await Recipe.findById(req.params.id).lean<any>();
     if (!existing) return res.status(404).json({ error: "Карта не найдена" });
 
     const nextVersion = (existing.version ?? 1) + 1;
@@ -283,7 +283,7 @@ router.patch("/:id", requireAuth, requireRoles("admin", "manager"), async (req: 
       req.params.id,
       { ...parsed.data, version: nextVersion, updatedBy: req.user!.sub },
       { new: true, runValidators: true }
-    ).lean();
+    ).lean<any>();
 
     if (!item) return res.status(404).json({ error: "Карта не найдена" });
     res.json({ item: toRecipe(item) });
@@ -295,7 +295,7 @@ router.patch("/:id", requireAuth, requireRoles("admin", "manager"), async (req: 
 // ─── Soft delete (archive) ──────────────────────────────────────────────────
 router.delete("/:id", requireAuth, requireRoles("admin"), async (req, res, next) => {
   try {
-    const item = await Recipe.findByIdAndUpdate(req.params.id, { status: "archived" }, { new: true }).lean();
+    const item = await Recipe.findByIdAndUpdate(req.params.id, { status: "archived" }, { new: true }).lean<any>();
     if (!item) return res.status(404).json({ error: "Карта не найдена" });
     res.json({ item: toRecipe(item) });
   } catch (e) {
@@ -307,14 +307,14 @@ router.delete("/:id", requireAuth, requireRoles("admin"), async (req, res, next)
 router.get("/:id/history", requireAuth, requireRoles("admin", "manager"), async (req, res, next) => {
   try {
     const recipeId = req.params.id;
-    const recipe = await Recipe.findById(recipeId).select("_id name version").lean();
+    const recipe = await Recipe.findById(recipeId).select("_id name version").lean<any>();
     if (!recipe) return res.status(404).json({ error: "Карта не найдена" });
 
     const versions = await RecipeVersion.find({ recipeId })
       .sort({ version: -1 })
       .limit(50)
       .select("version changedFields changeNote changedBy createdAt")
-      .lean();
+      .lean<any[]>();
 
     res.json({
       recipeId,
@@ -343,7 +343,7 @@ router.get("/:id/history/:version", requireAuth, requireRoles("admin", "manager"
     const doc = await RecipeVersion.findOne({
       recipeId: req.params.id,
       version: versionNum
-    }).lean();
+    }).lean<any>();
 
     if (!doc) return res.status(404).json({ error: "Версия не найдена" });
     res.json({ version: doc.version, snapshot: toRecipe(doc.snapshot), createdAt: doc.createdAt });
@@ -360,13 +360,13 @@ router.post("/:id/restore/:version", requireAuth, requireRoles("admin"), async (
       return res.status(400).json({ error: "Некорректный номер версии" });
     }
 
-    const existing = await Recipe.findById(req.params.id).lean();
+    const existing = await Recipe.findById(req.params.id).lean<any>();
     if (!existing) return res.status(404).json({ error: "Карта не найдена" });
 
     const historyDoc = await RecipeVersion.findOne({
       recipeId: req.params.id,
       version: versionNum
-    }).lean();
+    }).lean<any>();
 
     if (!historyDoc) return res.status(404).json({ error: "Версия не найдена" });
 
@@ -401,7 +401,7 @@ router.post("/:id/restore/:version", requireAuth, requireRoles("admin"), async (
         updatedBy: req.user!.sub
       },
       { new: true, runValidators: true }
-    ).lean();
+    ).lean<any>();
 
     res.json({ item: toRecipe(updated), restoredFrom: versionNum });
   } catch (e) {

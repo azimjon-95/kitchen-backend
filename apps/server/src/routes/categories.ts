@@ -26,7 +26,7 @@ router.get("/taxonomy", (_req, res) => {
 
 router.get("/", async (_req, res, next) => {
   try {
-    const categories = await Category.find({ active: { $ne: false } }).sort({ sortOrder: 1, name: 1 }).lean();
+    const categories = await Category.find({ active: { $ne: false } }).sort({ sortOrder: 1, name: 1 }).lean<any[]>();
     res.json({
       items: categories.map(c => ({
         id: String(c._id),

@@ -1,0 +1,2769 @@
+[
+ {
+  "name": "Соус болоньезе",
+  "description": "Классический мясной соус для пасты и горячих блюд.",
+  "category": "Соусы",
+  "department": "Горячий цех",
+  "section": "Соусы",
+  "yieldLabel": "2,5 кг",
+  "yieldQuantity": 2.5,
+  "yieldUnit": "kg",
+  "portionCount": 10,
+  "ingredients": [
+   {
+    "name": "Говядина фарш",
+    "unit": "g",
+    "gross": 1000,
+    "net": 1000,
+    "pricePerUnit": 120,
+    "amount": "1 000 г"
+   },
+   {
+    "name": "Томаты в собственном соку",
+    "unit": "g",
+    "gross": 2000,
+    "net": 2000,
+    "pricePerUnit": 28,
+    "amount": "2 000 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 6,
+    "amount": "200 г"
+   },
+   {
+    "name": "Морковь",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 7,
+    "amount": "150 г"
+   },
+   {
+    "name": "Оливковое масло",
+    "unit": "ml",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 150,
+    "amount": "20 мл"
+   },
+   {
+    "name": "Чеснок",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 40,
+    "amount": "30 г"
+   },
+   {
+    "name": "Красное вино",
+    "unit": "ml",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 90,
+    "amount": "100 мл"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 3,
+    "amount": "10 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Мелко нарезать лук, морковь и чеснок."
+   },
+   {
+    "text": "Обжарить овощи на оливковом масле 5–7 минут."
+   },
+   {
+    "text": "Добавить фарш и жарить до изменения цвета."
+   },
+   {
+    "text": "Влить вино и выпарить наполовину."
+   },
+   {
+    "text": "Добавить томаты, соль и тушить 2 часа на слабом огне."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Соус путанеско",
+  "description": "Насыщенный томатный соус с оливками и каперсами.",
+  "category": "Соусы",
+  "department": "Горячий цех",
+  "section": "Соусы",
+  "yieldLabel": "1,2 кг",
+  "yieldQuantity": 1.2,
+  "yieldUnit": "kg",
+  "portionCount": 6,
+  "ingredients": [
+   {
+    "name": "Томаты",
+    "unit": "g",
+    "gross": 800,
+    "net": 800,
+    "pricePerUnit": 25,
+    "amount": "800 г"
+   },
+   {
+    "name": "Оливки без косточки",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 110,
+    "amount": "100 г"
+   },
+   {
+    "name": "Каперсы",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 200,
+    "amount": "30 г"
+   },
+   {
+    "name": "Чеснок",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 40,
+    "amount": "20 г"
+   },
+   {
+    "name": "Анчоусы",
+    "unit": "g",
+    "gross": 25,
+    "net": 25,
+    "pricePerUnit": 260,
+    "amount": "25 г"
+   },
+   {
+    "name": "Оливковое масло",
+    "unit": "ml",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 150,
+    "amount": "30 мл"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Подготовить ингредиенты, оливки нарезать кольцами."
+   },
+   {
+    "text": "Обжарить чеснок и анчоусы на масле."
+   },
+   {
+    "text": "Добавить томаты, оливки и каперсы."
+   },
+   {
+    "text": "Готовить 20 минут до нужной консистенции."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Соус сливочно-грибной",
+  "description": "Густой сливочный соус с шампиньонами для пасты и мяса.",
+  "category": "Соусы",
+  "department": "Горячий цех",
+  "section": "Соусы",
+  "yieldLabel": "1 л",
+  "yieldQuantity": 1,
+  "yieldUnit": "l",
+  "portionCount": 8,
+  "ingredients": [
+   {
+    "name": "Шампиньоны",
+    "unit": "g",
+    "gross": 400,
+    "net": 400,
+    "pricePerUnit": 35,
+    "amount": "400 г"
+   },
+   {
+    "name": "Сливки 22%",
+    "unit": "ml",
+    "gross": 500,
+    "net": 500,
+    "pricePerUnit": 55,
+    "amount": "500 мл"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 6,
+    "amount": "100 г"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 110,
+    "amount": "50 г"
+   },
+   {
+    "name": "Пармезан",
+    "unit": "g",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 320,
+    "amount": "50 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 6,
+    "net": 6,
+    "pricePerUnit": 3,
+    "amount": "6 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Нарезать грибы и лук."
+   },
+   {
+    "text": "Обжарить на сливочном масле до золотистого цвета."
+   },
+   {
+    "text": "Влить сливки и уварить на треть."
+   },
+   {
+    "text": "Добавить тёртый пармезан и посолить."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Паста карбонара",
+  "description": "Спагетти с беконом, желтками и пармезаном без сливок.",
+  "category": "Горячие блюда",
+  "department": "Горячий цех",
+  "section": "Паста",
+  "yieldLabel": "320 г",
+  "yieldQuantity": 320,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Спагетти",
+    "unit": "g",
+    "gross": 120,
+    "net": 120,
+    "pricePerUnit": 30,
+    "amount": "120 г"
+   },
+   {
+    "name": "Бекон",
+    "unit": "g",
+    "gross": 70,
+    "net": 70,
+    "pricePerUnit": 180,
+    "amount": "70 г"
+   },
+   {
+    "name": "Яичный желток",
+    "unit": "pcs",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 1500,
+    "amount": "2 шт"
+   },
+   {
+    "name": "Пармезан",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 320,
+    "amount": "30 г"
+   },
+   {
+    "name": "Перец чёрный",
+    "unit": "g",
+    "gross": 1,
+    "net": 1,
+    "pricePerUnit": 150,
+    "amount": "1 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Отварить спагетти в подсоленной воде до al dente."
+   },
+   {
+    "text": "Обжарить бекон до хруста."
+   },
+   {
+    "text": "Смешать желтки с пармезаном и перцем."
+   },
+   {
+    "text": "Соединить пасту с беконом, снять с огня и добавить яичную смесь."
+   },
+   {
+    "text": "Быстро перемешать до кремовой текстуры."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Паста с морепродуктами",
+  "description": "Лингвини с креветками, мидиями и томатным соусом.",
+  "category": "Горячие блюда",
+  "department": "Горячий цех",
+  "section": "Паста",
+  "yieldLabel": "350 г",
+  "yieldQuantity": 350,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Лингвини",
+    "unit": "g",
+    "gross": 120,
+    "net": 120,
+    "pricePerUnit": 40,
+    "amount": "120 г"
+   },
+   {
+    "name": "Креветки очищенные",
+    "unit": "g",
+    "gross": 80,
+    "net": 80,
+    "pricePerUnit": 260,
+    "amount": "80 г"
+   },
+   {
+    "name": "Мидии",
+    "unit": "g",
+    "gross": 80,
+    "net": 80,
+    "pricePerUnit": 150,
+    "amount": "80 г"
+   },
+   {
+    "name": "Соус путанеско",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 60,
+    "amount": "100 г"
+   },
+   {
+    "name": "Чеснок",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 40,
+    "amount": "10 г"
+   },
+   {
+    "name": "Петрушка",
+    "unit": "g",
+    "gross": 5,
+    "net": 5,
+    "pricePerUnit": 60,
+    "amount": "5 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Отварить лингвини."
+   },
+   {
+    "text": "Обжарить чеснок, добавить креветки и мидии."
+   },
+   {
+    "text": "Влить соус и прогреть 2 минуты."
+   },
+   {
+    "text": "Добавить пасту, перемешать и посыпать петрушкой."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Феттучине Альфредо с курицей",
+  "description": "Феттучине в сливочном соусе с обжаренным куриным филе.",
+  "category": "Горячие блюда",
+  "department": "Горячий цех",
+  "section": "Паста",
+  "yieldLabel": "340 г",
+  "yieldQuantity": 340,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Феттучине",
+    "unit": "g",
+    "gross": 120,
+    "net": 120,
+    "pricePerUnit": 38,
+    "amount": "120 г"
+   },
+   {
+    "name": "Куриное филе",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 55,
+    "amount": "100 г"
+   },
+   {
+    "name": "Сливки 22%",
+    "unit": "ml",
+    "gross": 120,
+    "net": 120,
+    "pricePerUnit": 55,
+    "amount": "120 мл"
+   },
+   {
+    "name": "Пармезан",
+    "unit": "g",
+    "gross": 25,
+    "net": 25,
+    "pricePerUnit": 320,
+    "amount": "25 г"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 15,
+    "net": 15,
+    "pricePerUnit": 110,
+    "amount": "15 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Отварить феттучине."
+   },
+   {
+    "text": "Нарезать и обжарить курицу."
+   },
+   {
+    "text": "Растопить масло, влить сливки, добавить пармезан."
+   },
+   {
+    "text": "Соединить пасту, курицу и соус."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Куриная грудка гриль",
+  "description": "Сочная куриная грудка с базовыми специями.",
+  "category": "Горячие блюда",
+  "department": "Горячий цех",
+  "section": "Мангал",
+  "yieldLabel": "200 г",
+  "yieldQuantity": 200,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Куриная грудка",
+    "unit": "g",
+    "gross": 220,
+    "net": 220,
+    "pricePerUnit": 55,
+    "amount": "220 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 3,
+    "net": 3,
+    "pricePerUnit": 3,
+    "amount": "3 г"
+   },
+   {
+    "name": "Растительное масло",
+    "unit": "ml",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 22,
+    "amount": "10 мл"
+   },
+   {
+    "name": "Паприка",
+    "unit": "g",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 120,
+    "amount": "2 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Обсушить грудку и отбить до равномерной толщины."
+   },
+   {
+    "text": "Натереть солью, паприкой и маслом."
+   },
+   {
+    "text": "Жарить на гриле по 6 минут с каждой стороны."
+   },
+   {
+    "text": "Дать отдохнуть 3 минуты перед подачей."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Шашлык из баранины",
+  "description": "Мякоть баранины, маринованная с луком и зирой, на углях.",
+  "category": "Горячие блюда",
+  "department": "Горячий цех",
+  "section": "Мангал",
+  "yieldLabel": "250 г",
+  "yieldQuantity": 250,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Баранина мякоть",
+    "unit": "g",
+    "gross": 300,
+    "net": 300,
+    "pricePerUnit": 140,
+    "amount": "300 г"
+   },
+   {
+    "name": "Курдючный жир",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 60,
+    "amount": "30 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 80,
+    "net": 80,
+    "pricePerUnit": 6,
+    "amount": "80 г"
+   },
+   {
+    "name": "Зира",
+    "unit": "g",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 200,
+    "amount": "2 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 4,
+    "net": 4,
+    "pricePerUnit": 3,
+    "amount": "4 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Нарезать баранину кубиками 4×4 см."
+   },
+   {
+    "text": "Замариновать с луком, зирой и солью минимум на 4 часа."
+   },
+   {
+    "text": "Нанизать на шампур, чередуя с жиром."
+   },
+   {
+    "text": "Жарить на углях 12–15 минут, переворачивая."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Люля-кебаб из говядины",
+  "description": "Рубленая говядина с луком и специями на шампуре.",
+  "category": "Горячие блюда",
+  "department": "Горячий цех",
+  "section": "Мангал",
+  "yieldLabel": "220 г",
+  "yieldQuantity": 220,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Говядина фарш",
+    "unit": "g",
+    "gross": 220,
+    "net": 220,
+    "pricePerUnit": 120,
+    "amount": "220 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 6,
+    "amount": "50 г"
+   },
+   {
+    "name": "Кинза",
+    "unit": "g",
+    "gross": 5,
+    "net": 5,
+    "pricePerUnit": 60,
+    "amount": "5 г"
+   },
+   {
+    "name": "Зира",
+    "unit": "g",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 200,
+    "amount": "2 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 3,
+    "net": 3,
+    "pricePerUnit": 3,
+    "amount": "3 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Смешать фарш с мелко рубленым луком, кинзой и специями."
+   },
+   {
+    "text": "Хорошо вымесить и отбить фарш."
+   },
+   {
+    "text": "Сформировать колбаски на шампурах."
+   },
+   {
+    "text": "Жарить на углях 10–12 минут."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Омлет с зеленью",
+  "description": "Нежный омлет для завтрака.",
+  "category": "Завтраки",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "180 г",
+  "yieldQuantity": 180,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Яйца",
+    "unit": "pcs",
+    "gross": 3,
+    "net": 3,
+    "pricePerUnit": 1500,
+    "amount": "3 шт"
+   },
+   {
+    "name": "Молоко",
+    "unit": "ml",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 14,
+    "amount": "50 мл"
+   },
+   {
+    "name": "Зелень",
+    "unit": "g",
+    "gross": 15,
+    "net": 15,
+    "pricePerUnit": 60,
+    "amount": "15 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 3,
+    "net": 3,
+    "pricePerUnit": 3,
+    "amount": "3 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Смешать яйца с молоком и солью."
+   },
+   {
+    "text": "Разогреть сковороду."
+   },
+   {
+    "text": "Вылить смесь и готовить на среднем огне."
+   },
+   {
+    "text": "Добавить зелень и подать."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Крем-суп грибной",
+  "description": "Нежный суп с грибами и сливочной текстурой.",
+  "category": "Супы",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "1,5 л",
+  "yieldQuantity": 1.5,
+  "yieldUnit": "l",
+  "portionCount": 5,
+  "ingredients": [
+   {
+    "name": "Шампиньоны",
+    "unit": "g",
+    "gross": 500,
+    "net": 500,
+    "pricePerUnit": 35,
+    "amount": "500 г"
+   },
+   {
+    "name": "Сливки 22%",
+    "unit": "ml",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 55,
+    "amount": "200 мл"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 6,
+    "amount": "100 г"
+   },
+   {
+    "name": "Картофель",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 6,
+    "amount": "200 г"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 110,
+    "amount": "30 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Подготовить грибы, лук и картофель."
+   },
+   {
+    "text": "Обжарить на масле до мягкости."
+   },
+   {
+    "text": "Добавить воду и варить 20 минут."
+   },
+   {
+    "text": "Пробить блендером, добавить сливки и довести до кипения."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Плов ташкентский",
+  "description": "Классический плов с бараниной, жёлтой морковью и нутом.",
+  "category": "Горячие блюда",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "3,5 кг",
+  "yieldQuantity": 3.5,
+  "yieldUnit": "kg",
+  "portionCount": 10,
+  "ingredients": [
+   {
+    "name": "Рис девзира",
+    "unit": "g",
+    "gross": 1000,
+    "net": 1000,
+    "pricePerUnit": 32,
+    "amount": "1 000 г"
+   },
+   {
+    "name": "Баранина",
+    "unit": "g",
+    "gross": 1000,
+    "net": 1000,
+    "pricePerUnit": 140,
+    "amount": "1 000 г"
+   },
+   {
+    "name": "Морковь жёлтая",
+    "unit": "g",
+    "gross": 1000,
+    "net": 1000,
+    "pricePerUnit": 8,
+    "amount": "1 000 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 300,
+    "net": 300,
+    "pricePerUnit": 6,
+    "amount": "300 г"
+   },
+   {
+    "name": "Хлопковое масло",
+    "unit": "ml",
+    "gross": 250,
+    "net": 250,
+    "pricePerUnit": 24,
+    "amount": "250 мл"
+   },
+   {
+    "name": "Нут",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 22,
+    "amount": "150 г"
+   },
+   {
+    "name": "Зира",
+    "unit": "g",
+    "gross": 5,
+    "net": 5,
+    "pricePerUnit": 200,
+    "amount": "5 г"
+   },
+   {
+    "name": "Чеснок",
+    "unit": "pcs",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 2500,
+    "amount": "2 шт"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Раскалить масло в казане, обжарить лук."
+   },
+   {
+    "text": "Добавить мясо и обжарить до корочки."
+   },
+   {
+    "text": "Выложить морковь соломкой, тушить 10 минут."
+   },
+   {
+    "text": "Добавить нут, зиру, чеснок и воду — зирвак варить 40 минут."
+   },
+   {
+    "text": "Выложить промытый рис, залить водой и готовить под крышкой 25 минут."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Бульон куриный",
+  "description": "Базовый прозрачный бульон для супов и соусов.",
+  "category": "Заготовки",
+  "department": "Горячий цех",
+  "section": "Заготовка",
+  "yieldLabel": "5 л",
+  "yieldQuantity": 5,
+  "yieldUnit": "l",
+  "portionCount": 20,
+  "ingredients": [
+   {
+    "name": "Куриный каркас",
+    "unit": "g",
+    "gross": 2000,
+    "net": 2000,
+    "pricePerUnit": 15,
+    "amount": "2 000 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 6,
+    "amount": "200 г"
+   },
+   {
+    "name": "Морковь",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 7,
+    "amount": "200 г"
+   },
+   {
+    "name": "Сельдерей",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 30,
+    "amount": "100 г"
+   },
+   {
+    "name": "Лавровый лист",
+    "unit": "g",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 300,
+    "amount": "2 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Промыть каркасы и залить холодной водой."
+   },
+   {
+    "text": "Довести до кипения и снять пену."
+   },
+   {
+    "text": "Добавить овощи и варить 3 часа на минимальном огне."
+   },
+   {
+    "text": "Процедить и охладить."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Карамелизированный лук",
+  "description": "Томлёный лук для бургеров, соусов и гарниров.",
+  "category": "Заготовки",
+  "department": "Горячий цех",
+  "section": "Заготовка",
+  "yieldLabel": "500 г",
+  "yieldQuantity": 500,
+  "yieldUnit": "g",
+  "portionCount": 10,
+  "ingredients": [
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 1500,
+    "net": 1500,
+    "pricePerUnit": 6,
+    "amount": "1 500 г"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 60,
+    "net": 60,
+    "pricePerUnit": 110,
+    "amount": "60 г"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 14,
+    "amount": "20 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 5,
+    "net": 5,
+    "pricePerUnit": 3,
+    "amount": "5 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Нарезать лук тонкими полукольцами."
+   },
+   {
+    "text": "Растопить масло, выложить лук."
+   },
+   {
+    "text": "Томить на слабом огне 40 минут, помешивая."
+   },
+   {
+    "text": "Добавить сахар и соль, довести до карамельного цвета."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Филадельфия классик",
+  "description": "Ролл с лососем, сливочным сыром и огурцом.",
+  "category": "Роллы",
+  "department": "Суши",
+  "section": "Роллы",
+  "yieldLabel": "8 шт · 260 г",
+  "yieldQuantity": 8,
+  "yieldUnit": "pcs",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Рис для суши",
+    "unit": "g",
+    "gross": 140,
+    "net": 140,
+    "pricePerUnit": 45,
+    "amount": "140 г"
+   },
+   {
+    "name": "Лосось",
+    "unit": "g",
+    "gross": 80,
+    "net": 80,
+    "pricePerUnit": 280,
+    "amount": "80 г"
+   },
+   {
+    "name": "Сливочный сыр",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 150,
+    "amount": "40 г"
+   },
+   {
+    "name": "Огурец",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 12,
+    "amount": "20 г"
+   },
+   {
+    "name": "Нори",
+    "unit": "pcs",
+    "gross": 1,
+    "net": 1,
+    "pricePerUnit": 900,
+    "amount": "1 шт"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Выложить рис на лист нори, перевернуть."
+   },
+   {
+    "text": "Выложить сыр и огурец."
+   },
+   {
+    "text": "Свернуть ролл с помощью коврика."
+   },
+   {
+    "text": "Обернуть пластами лосося и нарезать на 8 частей."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Калифорния с крабом",
+  "description": "Ролл с крабом, авокадо и икрой масаго.",
+  "category": "Роллы",
+  "department": "Суши",
+  "section": "Роллы",
+  "yieldLabel": "8 шт · 240 г",
+  "yieldQuantity": 8,
+  "yieldUnit": "pcs",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Рис для суши",
+    "unit": "g",
+    "gross": 140,
+    "net": 140,
+    "pricePerUnit": 45,
+    "amount": "140 г"
+   },
+   {
+    "name": "Снежный краб",
+    "unit": "g",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 130,
+    "amount": "50 г"
+   },
+   {
+    "name": "Авокадо",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 90,
+    "amount": "40 г"
+   },
+   {
+    "name": "Икра масаго",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 400,
+    "amount": "20 г"
+   },
+   {
+    "name": "Майонез японский",
+    "unit": "g",
+    "gross": 15,
+    "net": 15,
+    "pricePerUnit": 90,
+    "amount": "15 г"
+   },
+   {
+    "name": "Нори",
+    "unit": "pcs",
+    "gross": 1,
+    "net": 1,
+    "pricePerUnit": 900,
+    "amount": "1 шт"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Выложить рис на нори и перевернуть."
+   },
+   {
+    "text": "Выложить краб с майонезом и авокадо."
+   },
+   {
+    "text": "Свернуть ролл."
+   },
+   {
+    "text": "Обвалять в икре масаго и нарезать."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Запечённый ролл с угрём",
+  "description": "Тёплый ролл под сырной шапкой с копчёным угрём.",
+  "category": "Роллы",
+  "department": "Суши",
+  "section": "Роллы",
+  "yieldLabel": "8 шт · 280 г",
+  "yieldQuantity": 8,
+  "yieldUnit": "pcs",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Рис для суши",
+    "unit": "g",
+    "gross": 140,
+    "net": 140,
+    "pricePerUnit": 45,
+    "amount": "140 г"
+   },
+   {
+    "name": "Угорь копчёный",
+    "unit": "g",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 520,
+    "amount": "50 г"
+   },
+   {
+    "name": "Сливочный сыр",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 150,
+    "amount": "30 г"
+   },
+   {
+    "name": "Соус унаги",
+    "unit": "ml",
+    "gross": 15,
+    "net": 15,
+    "pricePerUnit": 120,
+    "amount": "15 мл"
+   },
+   {
+    "name": "Сырная шапка",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 110,
+    "amount": "40 г"
+   },
+   {
+    "name": "Нори",
+    "unit": "pcs",
+    "gross": 1,
+    "net": 1,
+    "pricePerUnit": 900,
+    "amount": "1 шт"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Свернуть ролл с угрём и сливочным сыром."
+   },
+   {
+    "text": "Нарезать на 8 частей и выложить на противень."
+   },
+   {
+    "text": "Покрыть сырной шапкой."
+   },
+   {
+    "text": "Запечь при 220 °C 5 минут, полить соусом унаги."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Сашими из лосося",
+  "description": "Тонкие ломтики охлаждённого лосося с дайконом.",
+  "category": "Сашими",
+  "department": "Суши",
+  "section": "Сашими / Нигири",
+  "yieldLabel": "5 шт · 100 г",
+  "yieldQuantity": 5,
+  "yieldUnit": "pcs",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Лосось",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 280,
+    "amount": "100 г"
+   },
+   {
+    "name": "Дайкон",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 20,
+    "amount": "30 г"
+   },
+   {
+    "name": "Васаби",
+    "unit": "g",
+    "gross": 5,
+    "net": 5,
+    "pricePerUnit": 250,
+    "amount": "5 г"
+   },
+   {
+    "name": "Имбирь маринованный",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 90,
+    "amount": "10 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Зачистить филе лосося."
+   },
+   {
+    "text": "Нарезать под углом ломтиками 8 мм."
+   },
+   {
+    "text": "Выложить на подушку из дайкона."
+   },
+   {
+    "text": "Подать с васаби и имбирём."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Нигири с тунцом",
+  "description": "Рисовые бруски с ломтиками тунца.",
+  "category": "Нигири",
+  "department": "Суши",
+  "section": "Сашими / Нигири",
+  "yieldLabel": "2 шт · 70 г",
+  "yieldQuantity": 2,
+  "yieldUnit": "pcs",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Рис для суши",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 45,
+    "amount": "40 г"
+   },
+   {
+    "name": "Тунец",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 350,
+    "amount": "30 г"
+   },
+   {
+    "name": "Васаби",
+    "unit": "g",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 250,
+    "amount": "2 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Сформировать 2 рисовых бруска по 20 г."
+   },
+   {
+    "text": "Нанести каплю васаби."
+   },
+   {
+    "text": "Накрыть ломтиком тунца и слегка прижать."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Рис для суши",
+  "description": "Базовый рис с заправкой су для роллов и нигири.",
+  "category": "Заготовки",
+  "department": "Суши",
+  "section": "Заготовка",
+  "yieldLabel": "2,8 кг",
+  "yieldQuantity": 2.8,
+  "yieldUnit": "kg",
+  "portionCount": 20,
+  "ingredients": [
+   {
+    "name": "Рис японский",
+    "unit": "g",
+    "gross": 2000,
+    "net": 2000,
+    "pricePerUnit": 38,
+    "amount": "2 000 г"
+   },
+   {
+    "name": "Рисовый уксус",
+    "unit": "ml",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 60,
+    "amount": "200 мл"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 80,
+    "net": 80,
+    "pricePerUnit": 14,
+    "amount": "80 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 25,
+    "net": 25,
+    "pricePerUnit": 3,
+    "amount": "25 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Промыть рис до прозрачной воды."
+   },
+   {
+    "text": "Варить в рисоварке по инструкции."
+   },
+   {
+    "text": "Нагреть уксус с сахаром и солью до растворения."
+   },
+   {
+    "text": "Перемешать рис с заправкой веслом и остудить до 37 °C."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Салат овощной",
+  "description": "Свежий салат из сезонных овощей.",
+  "category": "Салаты",
+  "department": "Холодный цех",
+  "section": "Салаты",
+  "yieldLabel": "250 г",
+  "yieldQuantity": 250,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Огурцы",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 12,
+    "amount": "100 г"
+   },
+   {
+    "name": "Томаты",
+    "unit": "g",
+    "gross": 120,
+    "net": 120,
+    "pricePerUnit": 25,
+    "amount": "120 г"
+   },
+   {
+    "name": "Зелень",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 60,
+    "amount": "10 г"
+   },
+   {
+    "name": "Растительное масло",
+    "unit": "ml",
+    "gross": 15,
+    "net": 15,
+    "pricePerUnit": 22,
+    "amount": "15 мл"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Вымыть овощи."
+   },
+   {
+    "text": "Нарезать одинаковыми кусочками."
+   },
+   {
+    "text": "Добавить зелень и заправку."
+   },
+   {
+    "text": "Перемешать перед подачей."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Цезарь с курицей",
+  "description": "Романо, куриное филе гриль, крутоны и соус цезарь.",
+  "category": "Салаты",
+  "department": "Холодный цех",
+  "section": "Салаты",
+  "yieldLabel": "280 г",
+  "yieldQuantity": 280,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Салат романо",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 70,
+    "amount": "100 г"
+   },
+   {
+    "name": "Куриное филе гриль",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 60,
+    "amount": "100 г"
+   },
+   {
+    "name": "Крутоны",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 50,
+    "amount": "20 г"
+   },
+   {
+    "name": "Пармезан",
+    "unit": "g",
+    "gross": 15,
+    "net": 15,
+    "pricePerUnit": 320,
+    "amount": "15 г"
+   },
+   {
+    "name": "Соус цезарь",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 80,
+    "amount": "40 г"
+   },
+   {
+    "name": "Томаты черри",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 45,
+    "amount": "40 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Порвать листья романо руками."
+   },
+   {
+    "text": "Заправить соусом цезарь."
+   },
+   {
+    "text": "Выложить нарезанную курицу и черри."
+   },
+   {
+    "text": "Посыпать крутонами и пармезаном."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Ачичук",
+  "description": "Узбекский салат из томатов и лука к плову и шашлыку.",
+  "category": "Салаты",
+  "department": "Холодный цех",
+  "section": "Салаты",
+  "yieldLabel": "600 г",
+  "yieldQuantity": 600,
+  "yieldUnit": "g",
+  "portionCount": 4,
+  "ingredients": [
+   {
+    "name": "Томаты",
+    "unit": "g",
+    "gross": 400,
+    "net": 400,
+    "pricePerUnit": 25,
+    "amount": "400 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 6,
+    "amount": "150 г"
+   },
+   {
+    "name": "Перец острый",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 50,
+    "amount": "10 г"
+   },
+   {
+    "name": "Райхон",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 80,
+    "amount": "10 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 4,
+    "net": 4,
+    "pricePerUnit": 3,
+    "amount": "4 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Нарезать лук тонкими полукольцами, промыть в холодной воде."
+   },
+   {
+    "text": "Нарезать томаты тонкими дольками."
+   },
+   {
+    "text": "Соединить с луком, острым перцем и райхоном."
+   },
+   {
+    "text": "Посолить непосредственно перед подачей."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Брускетта с томатами",
+  "description": "Хрустящий багет с томатами, базиликом и чесноком.",
+  "category": "Закуски",
+  "department": "Холодный цех",
+  "section": "Закуски",
+  "yieldLabel": "3 шт · 180 г",
+  "yieldQuantity": 3,
+  "yieldUnit": "pcs",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Багет",
+    "unit": "g",
+    "gross": 90,
+    "net": 90,
+    "pricePerUnit": 25,
+    "amount": "90 г"
+   },
+   {
+    "name": "Томаты",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 25,
+    "amount": "100 г"
+   },
+   {
+    "name": "Базилик",
+    "unit": "g",
+    "gross": 5,
+    "net": 5,
+    "pricePerUnit": 120,
+    "amount": "5 г"
+   },
+   {
+    "name": "Чеснок",
+    "unit": "g",
+    "gross": 5,
+    "net": 5,
+    "pricePerUnit": 40,
+    "amount": "5 г"
+   },
+   {
+    "name": "Оливковое масло",
+    "unit": "ml",
+    "gross": 15,
+    "net": 15,
+    "pricePerUnit": 150,
+    "amount": "15 мл"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Нарезать багет и подсушить на гриле."
+   },
+   {
+    "text": "Натереть хлеб чесноком."
+   },
+   {
+    "text": "Нарезать томаты кубиком, смешать с базиликом и маслом."
+   },
+   {
+    "text": "Выложить на хлеб и подать."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Сырная тарелка",
+  "description": "Ассорти из четырёх сыров с орехами, мёдом и виноградом.",
+  "category": "Закуски",
+  "department": "Холодный цех",
+  "section": "Закуски",
+  "yieldLabel": "250 г",
+  "yieldQuantity": 250,
+  "yieldUnit": "g",
+  "portionCount": 1,
+  "ingredients": [
+   {
+    "name": "Пармезан",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 320,
+    "amount": "40 г"
+   },
+   {
+    "name": "Дор блю",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 290,
+    "amount": "40 г"
+   },
+   {
+    "name": "Камамбер",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 260,
+    "amount": "40 г"
+   },
+   {
+    "name": "Гауда",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 160,
+    "amount": "40 г"
+   },
+   {
+    "name": "Грецкий орех",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 140,
+    "amount": "20 г"
+   },
+   {
+    "name": "Мёд",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 90,
+    "amount": "20 г"
+   },
+   {
+    "name": "Виноград",
+    "unit": "g",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 30,
+    "amount": "50 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Нарезать сыры разными формами."
+   },
+   {
+    "text": "Выложить на доску по часовой стрелке от мягкого к твёрдому."
+   },
+   {
+    "text": "Добавить виноград и орехи."
+   },
+   {
+    "text": "Подать мёд в соуснике."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Соус цезарь",
+  "description": "Заправка для салата цезарь на основе майонеза и анчоусов.",
+  "category": "Заготовки",
+  "department": "Холодный цех",
+  "section": "Заготовка",
+  "yieldLabel": "1 кг",
+  "yieldQuantity": 1,
+  "yieldUnit": "kg",
+  "portionCount": 25,
+  "ingredients": [
+   {
+    "name": "Майонез",
+    "unit": "g",
+    "gross": 700,
+    "net": 700,
+    "pricePerUnit": 40,
+    "amount": "700 г"
+   },
+   {
+    "name": "Пармезан",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 320,
+    "amount": "100 г"
+   },
+   {
+    "name": "Анчоусы",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 260,
+    "amount": "30 г"
+   },
+   {
+    "name": "Чеснок",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 40,
+    "amount": "20 г"
+   },
+   {
+    "name": "Горчица дижонская",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 110,
+    "amount": "30 г"
+   },
+   {
+    "name": "Лимонный сок",
+    "unit": "ml",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 50,
+    "amount": "40 мл"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Пробить блендером анчоусы с чесноком."
+   },
+   {
+    "text": "Добавить горчицу и лимонный сок."
+   },
+   {
+    "text": "Вмешать майонез и тёртый пармезан."
+   },
+   {
+    "text": "Хранить при +2…+4 °C не более 48 часов."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Тирамису",
+  "description": "Итальянский десерт с маскарпоне, савоярди и эспрессо.",
+  "category": "Десерты",
+  "department": "Кондитерский",
+  "section": "Десерты",
+  "yieldLabel": "1,2 кг",
+  "yieldQuantity": 1.2,
+  "yieldUnit": "kg",
+  "portionCount": 8,
+  "ingredients": [
+   {
+    "name": "Маскарпоне",
+    "unit": "g",
+    "gross": 500,
+    "net": 500,
+    "pricePerUnit": 180,
+    "amount": "500 г"
+   },
+   {
+    "name": "Яйца",
+    "unit": "pcs",
+    "gross": 4,
+    "net": 4,
+    "pricePerUnit": 1500,
+    "amount": "4 шт"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 14,
+    "amount": "100 г"
+   },
+   {
+    "name": "Савоярди",
+    "unit": "g",
+    "gross": 300,
+    "net": 300,
+    "pricePerUnit": 110,
+    "amount": "300 г"
+   },
+   {
+    "name": "Эспрессо",
+    "unit": "ml",
+    "gross": 300,
+    "net": 300,
+    "pricePerUnit": 40,
+    "amount": "300 мл"
+   },
+   {
+    "name": "Какао",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 150,
+    "amount": "20 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Взбить желтки с сахаром до белой массы."
+   },
+   {
+    "text": "Вмешать маскарпоне, затем взбитые белки."
+   },
+   {
+    "text": "Обмакнуть савоярди в эспрессо и выложить слоем."
+   },
+   {
+    "text": "Чередовать слои крема и печенья."
+   },
+   {
+    "text": "Охладить 6 часов, перед подачей посыпать какао."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Чизкейк Нью-Йорк",
+  "description": "Плотный запечённый чизкейк на песочной основе.",
+  "category": "Десерты",
+  "department": "Кондитерский",
+  "section": "Десерты",
+  "yieldLabel": "1,8 кг",
+  "yieldQuantity": 1.8,
+  "yieldUnit": "kg",
+  "portionCount": 12,
+  "ingredients": [
+   {
+    "name": "Сливочный сыр",
+    "unit": "g",
+    "gross": 900,
+    "net": 900,
+    "pricePerUnit": 150,
+    "amount": "900 г"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 14,
+    "amount": "200 г"
+   },
+   {
+    "name": "Яйца",
+    "unit": "pcs",
+    "gross": 4,
+    "net": 4,
+    "pricePerUnit": 1500,
+    "amount": "4 шт"
+   },
+   {
+    "name": "Сливки 33%",
+    "unit": "ml",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 70,
+    "amount": "200 мл"
+   },
+   {
+    "name": "Печенье",
+    "unit": "g",
+    "gross": 250,
+    "net": 250,
+    "pricePerUnit": 60,
+    "amount": "250 г"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 110,
+    "amount": "100 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Измельчить печенье с маслом и утрамбовать в форму."
+   },
+   {
+    "text": "Смешать сыр с сахаром, добавить яйца по одному и сливки."
+   },
+   {
+    "text": "Вылить на основу."
+   },
+   {
+    "text": "Выпекать на водяной бане при 160 °C 75 минут."
+   },
+   {
+    "text": "Остудить в духовке, затем охладить 8 часов."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Круассан классический",
+  "description": "Слоёный круассан на сливочном масле 82%.",
+  "category": "Выпечка",
+  "department": "Кондитерский",
+  "section": "Пекарный",
+  "yieldLabel": "12 шт",
+  "yieldQuantity": 12,
+  "yieldUnit": "pcs",
+  "portionCount": 12,
+  "ingredients": [
+   {
+    "name": "Мука",
+    "unit": "g",
+    "gross": 500,
+    "net": 500,
+    "pricePerUnit": 9,
+    "amount": "500 г"
+   },
+   {
+    "name": "Сливочное масло 82%",
+    "unit": "g",
+    "gross": 280,
+    "net": 280,
+    "pricePerUnit": 120,
+    "amount": "280 г"
+   },
+   {
+    "name": "Молоко",
+    "unit": "ml",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 14,
+    "amount": "150 мл"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 60,
+    "net": 60,
+    "pricePerUnit": 14,
+    "amount": "60 г"
+   },
+   {
+    "name": "Дрожжи",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 80,
+    "amount": "10 г"
+   },
+   {
+    "name": "Соль",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 3,
+    "amount": "10 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Замесить тесто и охладить 1 час."
+   },
+   {
+    "text": "Раскатать, вложить пласт масла и сделать 3 одинарных сложения."
+   },
+   {
+    "text": "Раскатать, нарезать треугольники и свернуть."
+   },
+   {
+    "text": "Расстоять 1,5 часа при 26 °C."
+   },
+   {
+    "text": "Выпекать при 190 °C 16–18 минут."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Крем заварной",
+  "description": "Базовый крем патисьер для эклеров, тартов и наполеона.",
+  "category": "Заготовки",
+  "department": "Кондитерский",
+  "section": "Заготовка",
+  "yieldLabel": "1 кг",
+  "yieldQuantity": 1,
+  "yieldUnit": "kg",
+  "portionCount": 10,
+  "ingredients": [
+   {
+    "name": "Молоко",
+    "unit": "ml",
+    "gross": 750,
+    "net": 750,
+    "pricePerUnit": 14,
+    "amount": "750 мл"
+   },
+   {
+    "name": "Яичный желток",
+    "unit": "pcs",
+    "gross": 6,
+    "net": 6,
+    "pricePerUnit": 1500,
+    "amount": "6 шт"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 14,
+    "amount": "150 г"
+   },
+   {
+    "name": "Крахмал кукурузный",
+    "unit": "g",
+    "gross": 60,
+    "net": 60,
+    "pricePerUnit": 30,
+    "amount": "60 г"
+   },
+   {
+    "name": "Ваниль",
+    "unit": "g",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 900,
+    "amount": "2 г"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 50,
+    "net": 50,
+    "pricePerUnit": 110,
+    "amount": "50 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Довести молоко с ванилью до кипения."
+   },
+   {
+    "text": "Смешать желтки с сахаром и крахмалом."
+   },
+   {
+    "text": "Влить горячее молоко тонкой струйкой, вернуть на огонь."
+   },
+   {
+    "text": "Варить до загустения, постоянно помешивая."
+   },
+   {
+    "text": "Добавить масло, накрыть плёнкой в контакт и охладить."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Борщ",
+  "description": "Классический борщ с говядиной, свёклой и сметаной.",
+  "category": "Супы",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "3 л",
+  "yieldQuantity": 3,
+  "yieldUnit": "l",
+  "portionCount": 10,
+  "ingredients": [
+   {
+    "name": "Говядина на кости",
+    "unit": "g",
+    "gross": 800,
+    "net": 800,
+    "pricePerUnit": 95,
+    "amount": "800 г"
+   },
+   {
+    "name": "Свёкла",
+    "unit": "g",
+    "gross": 300,
+    "net": 300,
+    "pricePerUnit": 5,
+    "amount": "300 г"
+   },
+   {
+    "name": "Капуста белокочанная",
+    "unit": "g",
+    "gross": 300,
+    "net": 300,
+    "pricePerUnit": 5,
+    "amount": "300 г"
+   },
+   {
+    "name": "Картофель",
+    "unit": "g",
+    "gross": 300,
+    "net": 300,
+    "pricePerUnit": 6,
+    "amount": "300 г"
+   },
+   {
+    "name": "Морковь",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 7,
+    "amount": "150 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 6,
+    "amount": "150 г"
+   },
+   {
+    "name": "Томатная паста",
+    "unit": "g",
+    "gross": 60,
+    "net": 60,
+    "pricePerUnit": 40,
+    "amount": "60 г"
+   },
+   {
+    "name": "Сметана",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 35,
+    "amount": "100 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Сварить бульон из говядины, снять пену."
+   },
+   {
+    "text": "Обжарить свёклу, морковь и лук с томатной пастой."
+   },
+   {
+    "text": "Заложить в бульон картофель, затем капусту."
+   },
+   {
+    "text": "Добавить зажарку и варить 15 минут."
+   },
+   {
+    "text": "Подавать со сметаной и зеленью."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Лагман",
+  "description": "Густой суп с говядиной, овощами и тянутой лапшой.",
+  "category": "Супы",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "2,4 л",
+  "yieldQuantity": 2.4,
+  "yieldUnit": "l",
+  "portionCount": 6,
+  "ingredients": [
+   {
+    "name": "Говядина",
+    "unit": "g",
+    "gross": 600,
+    "net": 600,
+    "pricePerUnit": 120,
+    "amount": "600 г"
+   },
+   {
+    "name": "Лапша лагманная",
+    "unit": "g",
+    "gross": 400,
+    "net": 400,
+    "pricePerUnit": 25,
+    "amount": "400 г"
+   },
+   {
+    "name": "Болгарский перец",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 18,
+    "amount": "200 г"
+   },
+   {
+    "name": "Редька",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 8,
+    "amount": "100 г"
+   },
+   {
+    "name": "Картофель",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 6,
+    "amount": "200 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 6,
+    "amount": "150 г"
+   },
+   {
+    "name": "Томатная паста",
+    "unit": "g",
+    "gross": 40,
+    "net": 40,
+    "pricePerUnit": 40,
+    "amount": "40 г"
+   },
+   {
+    "name": "Чеснок",
+    "unit": "g",
+    "gross": 20,
+    "net": 20,
+    "pricePerUnit": 40,
+    "amount": "20 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Нарезать мясо и обжарить в казане."
+   },
+   {
+    "text": "Добавить лук, овощи и томатную пасту."
+   },
+   {
+    "text": "Залить водой, тушить 1 час."
+   },
+   {
+    "text": "Отварить лапшу отдельно."
+   },
+   {
+    "text": "Подавать лапшу, залитую густой подливой."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Шурпа из баранины",
+  "description": "Наваристый суп с крупными кусками баранины и овощей.",
+  "category": "Супы",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "2,5 л",
+  "yieldQuantity": 2.5,
+  "yieldUnit": "l",
+  "portionCount": 8,
+  "ingredients": [
+   {
+    "name": "Баранина на кости",
+    "unit": "g",
+    "gross": 1000,
+    "net": 1000,
+    "pricePerUnit": 130,
+    "amount": "1 000 г"
+   },
+   {
+    "name": "Картофель",
+    "unit": "g",
+    "gross": 500,
+    "net": 500,
+    "pricePerUnit": 6,
+    "amount": "500 г"
+   },
+   {
+    "name": "Морковь",
+    "unit": "g",
+    "gross": 250,
+    "net": 250,
+    "pricePerUnit": 7,
+    "amount": "250 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 6,
+    "amount": "200 г"
+   },
+   {
+    "name": "Помидоры",
+    "unit": "g",
+    "gross": 250,
+    "net": 250,
+    "pricePerUnit": 25,
+    "amount": "250 г"
+   },
+   {
+    "name": "Болгарский перец",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 18,
+    "amount": "150 г"
+   },
+   {
+    "name": "Зелень",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 60,
+    "amount": "30 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Обжарить баранину до корочки."
+   },
+   {
+    "text": "Залить водой и варить 1 час, снимая пену."
+   },
+   {
+    "text": "Заложить крупно нарезанные овощи."
+   },
+   {
+    "text": "Варить ещё 40 минут, посыпать зеленью."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Мастава",
+  "description": "Узбекский суп с рисом, мясом и овощами.",
+  "category": "Супы",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "2 л",
+  "yieldQuantity": 2,
+  "yieldUnit": "l",
+  "portionCount": 6,
+  "ingredients": [
+   {
+    "name": "Баранина",
+    "unit": "g",
+    "gross": 400,
+    "net": 400,
+    "pricePerUnit": 130,
+    "amount": "400 г"
+   },
+   {
+    "name": "Рис",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 32,
+    "amount": "150 г"
+   },
+   {
+    "name": "Морковь",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 7,
+    "amount": "150 г"
+   },
+   {
+    "name": "Картофель",
+    "unit": "g",
+    "gross": 250,
+    "net": 250,
+    "pricePerUnit": 6,
+    "amount": "250 г"
+   },
+   {
+    "name": "Помидоры",
+    "unit": "g",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 25,
+    "amount": "200 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 6,
+    "amount": "100 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Обжарить мясо с луком и морковью."
+   },
+   {
+    "text": "Добавить помидоры и воду, варить 40 минут."
+   },
+   {
+    "text": "Заложить картофель и промытый рис."
+   },
+   {
+    "text": "Варить до готовности риса 20 минут."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Крем-суп из тыквы",
+  "description": "Бархатистый суп-пюре со сливками и тыквенными семечками.",
+  "category": "Супы",
+  "department": "Горячий цех",
+  "section": "Раздача",
+  "yieldLabel": "1,5 л",
+  "yieldQuantity": 1.5,
+  "yieldUnit": "l",
+  "portionCount": 6,
+  "ingredients": [
+   {
+    "name": "Тыква",
+    "unit": "g",
+    "gross": 800,
+    "net": 800,
+    "pricePerUnit": 12,
+    "amount": "800 г"
+   },
+   {
+    "name": "Лук репчатый",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 6,
+    "amount": "100 г"
+   },
+   {
+    "name": "Сливки 22%",
+    "unit": "ml",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 55,
+    "amount": "200 мл"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 30,
+    "net": 30,
+    "pricePerUnit": 110,
+    "amount": "30 г"
+   },
+   {
+    "name": "Бульон куриный",
+    "unit": "ml",
+    "gross": 500,
+    "net": 500,
+    "pricePerUnit": 5,
+    "amount": "500 мл"
+   },
+   {
+    "name": "Тыквенные семечки",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 200,
+    "amount": "10 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Обжарить лук на масле."
+   },
+   {
+    "text": "Добавить кубики тыквы и бульон, варить 20 минут."
+   },
+   {
+    "text": "Пробить блендером до гладкости."
+   },
+   {
+    "text": "Влить сливки, прогреть и подать с семечками."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Панна котта",
+  "description": "Нежный сливочный десерт с ягодным соусом.",
+  "category": "Десерты",
+  "department": "Кондитерский",
+  "section": "Десерты",
+  "yieldLabel": "1 кг",
+  "yieldQuantity": 1,
+  "yieldUnit": "kg",
+  "portionCount": 8,
+  "ingredients": [
+   {
+    "name": "Сливки 33%",
+    "unit": "ml",
+    "gross": 600,
+    "net": 600,
+    "pricePerUnit": 70,
+    "amount": "600 мл"
+   },
+   {
+    "name": "Молоко",
+    "unit": "ml",
+    "gross": 200,
+    "net": 200,
+    "pricePerUnit": 14,
+    "amount": "200 мл"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 80,
+    "net": 80,
+    "pricePerUnit": 14,
+    "amount": "80 г"
+   },
+   {
+    "name": "Желатин",
+    "unit": "g",
+    "gross": 10,
+    "net": 10,
+    "pricePerUnit": 450,
+    "amount": "10 г"
+   },
+   {
+    "name": "Ваниль",
+    "unit": "g",
+    "gross": 2,
+    "net": 2,
+    "pricePerUnit": 900,
+    "amount": "2 г"
+   },
+   {
+    "name": "Ягодный соус",
+    "unit": "g",
+    "gross": 120,
+    "net": 120,
+    "pricePerUnit": 150,
+    "amount": "120 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Замочить желатин в холодной воде."
+   },
+   {
+    "text": "Нагреть сливки, молоко, сахар и ваниль."
+   },
+   {
+    "text": "Растворить в тёплой смеси желатин."
+   },
+   {
+    "text": "Разлить по формам и охладить 6 часов."
+   },
+   {
+    "text": "Подать с ягодным соусом."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ },
+ {
+  "name": "Медовик",
+  "description": "Слоёный медовый торт со сметанным кремом.",
+  "category": "Десерты",
+  "department": "Кондитерский",
+  "section": "Десерты",
+  "yieldLabel": "1,6 кг",
+  "yieldQuantity": 1.6,
+  "yieldUnit": "kg",
+  "portionCount": 12,
+  "ingredients": [
+   {
+    "name": "Мука",
+    "unit": "g",
+    "gross": 400,
+    "net": 400,
+    "pricePerUnit": 9,
+    "amount": "400 г"
+   },
+   {
+    "name": "Мёд",
+    "unit": "g",
+    "gross": 120,
+    "net": 120,
+    "pricePerUnit": 90,
+    "amount": "120 г"
+   },
+   {
+    "name": "Яйца",
+    "unit": "pcs",
+    "gross": 3,
+    "net": 3,
+    "pricePerUnit": 1500,
+    "amount": "3 шт"
+   },
+   {
+    "name": "Сахар",
+    "unit": "g",
+    "gross": 150,
+    "net": 150,
+    "pricePerUnit": 14,
+    "amount": "150 г"
+   },
+   {
+    "name": "Сметана",
+    "unit": "g",
+    "gross": 600,
+    "net": 600,
+    "pricePerUnit": 35,
+    "amount": "600 г"
+   },
+   {
+    "name": "Сливочное масло",
+    "unit": "g",
+    "gross": 100,
+    "net": 100,
+    "pricePerUnit": 110,
+    "amount": "100 г"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Прогреть мёд с сахаром и маслом, ввести яйца."
+   },
+   {
+    "text": "Замесить тесто с мукой и разделить на 8 частей."
+   },
+   {
+    "text": "Раскатать и выпечь коржи по 4 минуты при 180 °C."
+   },
+   {
+    "text": "Промазать коржи кремом из сметаны."
+   },
+   {
+    "text": "Пропитывать 8 часов в холоде."
+   }
+  ],
+  "aliases": [],
+  "status": "published"
+ }
+]

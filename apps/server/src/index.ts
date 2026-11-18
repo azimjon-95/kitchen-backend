@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "./env.js";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -18,6 +18,7 @@ const allowedOrigins = (process.env.CLIENT_ORIGIN ?? "http://localhost:5173").sp
   .concat((process.env.ADMIN_ORIGIN ?? "http://localhost:5174").split(","));
 
 app.disable("x-powered-by");
+app.set("trust proxy", 1); // за прокси (Render/Railway/nginx) — корректный IP для rate-limit
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json({ limit: "4mb" }));
 app.use("/api/auth/login", rateLimit({ windowMs: 15 * 60 * 1000, limit: 20, standardHeaders: true, legacyHeaders: false }));

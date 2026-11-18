@@ -14,7 +14,7 @@ const createSchema = z.object({
 
 router.get("/", requireAuth, requireRoles("admin", "manager"), async (_req, res, next) => {
   try {
-    const items = await User.find().select("email name role active createdAt").sort({ createdAt: -1 }).lean();
+    const items = await User.find().select("email name role active createdAt").sort({ createdAt: -1 }).lean<any[]>();
     res.json({ items: items.map(u => ({ id: String(u._id), email: u.email, name: u.name, role: u.role, active: u.active, createdAt: u.createdAt })) });
   } catch (e) { next(e); }
 });
