@@ -1,7 +1,7 @@
 {
   "name": "clean-kitchen-backend",
   "private": true,
-  "version": "12.0.0",
+  "version": "13.0.0",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -12,7 +12,8 @@
     "typecheck": "npm run typecheck -w @clean-kitchen/shared && npm run typecheck -w @clean-kitchen/server",
     "start": "node apps/server/dist/index.js",
     "seed": "npm run seed -w @clean-kitchen/server",
-    "seed:prod": "npm run seed:prod -w @clean-kitchen/server"
+    "seed:prod": "npm run seed:prod -w @clean-kitchen/server",
+    "test": "npm test -w @clean-kitchen/server"
   },
   "devDependencies": {
     "typescript": "^5.7.3"

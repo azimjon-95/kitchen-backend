@@ -15,6 +15,9 @@ import syncRoutes from "./routes/sync.js";
 import voiceRoutes from "./routes/voice.js";
 import { redis, redisStatus } from "./services/cache.js";
 import { RedisStore } from "rate-limit-redis";
+import { buildV1, errorHandler as v1Errors } from "./v1/index.js";
+import { bootstrapSuperAdmin } from "./v1/bootstrap.js";
+import { assertSecrets, cfg } from "./v1/security.js";
 
 // сбой Redis/сети не должен валить сервер
 process.on("unhandledRejection", (e) => console.error("Unhandled rejection:", e));
@@ -22,6 +25,7 @@ process.on("unhandledRejection", (e) => console.error("Unhandled rejection:", e)
 const app = express();
 const port = Number(process.env.PORT ?? 4000);
 const allowedOrigins = (process.env.CLIENT_ORIGIN ?? "http://localhost:5173").split(",")
+  .concat(cfg().origins)
   .concat((process.env.ADMIN_ORIGIN ?? "http://localhost:5174").split(","))
   // мобильные приложения (Capacitor/Ionic WebView): iOS — capacitor://localhost, Android — https://localhost
   .concat(["capacitor://localhost", "ionic://localhost", "http://localhost", "https://localhost"]);
@@ -34,6 +38,10 @@ const limiterStore = (prefix: string) => redis
   ? { store: new RedisStore({ prefix: `ck:rl:${prefix}:`, sendCommand: (...args: string[]) => (redis as any).call(...args) }) }
   : {};
 app.use("/api/auth/login", rateLimit({ windowMs: 15 * 60 * 1000, limit: 20, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("login") }));
+app.use("/api/v1/auth/login", rateLimit({ windowMs: 15 * 60 * 1000, limit: 30, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("v1login") }));
+app.use("/api/v1/auth/password", rateLimit({ windowMs: 15 * 60 * 1000, limit: 10, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("v1pw") }));
+app.use("/api/v1/auth/refresh", rateLimit({ windowMs: 60 * 1000, limit: 60, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("v1refresh") }));
+app.use("/api/v1", rateLimit({ windowMs: 60 * 1000, limit: 600, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("v1all") }));
 app.use("/api/ocr", rateLimit({ windowMs: 60 * 1000, limit: 10, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("ocr") }));
 
 app.get("/api/health", (_req, res) => res.json({
@@ -46,17 +54,22 @@ app.get("/api/health", (_req, res) => res.json({
 
 app.get("/api", (_req, res) => res.json({
   name: "Clean Kitchen API",
-  version: "12.0.0",
-  stage: "ocr-qr-history-offline"
+  version: "13.0.0",
+  stage: "multi-tenant-rbac",
+  api: "/api/v1"
 }));
 
-app.use("/api/auth", authRoutes);
-app.use("/api/recipes", recipeRoutes);
-app.use("/api/categories", categoryRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/v1", buildV1(), v1Errors);
+// Старый однотенантный API (общий демо-каталог). В multi-tenant продакшене отключается: LEGACY_API=off
+if (process.env.LEGACY_API !== "off") {
+  app.use("/api/auth", authRoutes);
+  app.use("/api/recipes", recipeRoutes);
+  app.use("/api/categories", categoryRoutes);
+  app.use("/api/users", userRoutes);
+  app.use("/api/qr", qrRoutes);
+  app.use("/api/sync", syncRoutes);
+}
 app.use("/api/ocr", ocrRoutes);
-app.use("/api/qr", qrRoutes);
-app.use("/api/sync", syncRoutes);
 app.use("/api/voice/transcribe", rateLimit({ windowMs: 60 * 1000, limit: 30, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("voice") }));
 app.use("/api/voice", voiceRoutes);
 
@@ -76,6 +89,10 @@ async function start() {
   }
   await mongoose.connect(uri, { serverSelectionTimeoutMS: 10000 });
   console.log("MongoDB connected");
+
+  if (process.env.NODE_ENV === "production") assertSecrets();
+  const sa = await bootstrapSuperAdmin();
+  if (sa === "created") console.log("Super Admin создан из SUPER_ADMIN_EMAIL/SUPER_ADMIN_PASSWORD (после первого запуска пароль из ENV можно удалить).");
 
   const adminEmail = process.env.ADMIN_EMAIL?.toLowerCase();
   const adminPassword = process.env.ADMIN_PASSWORD;

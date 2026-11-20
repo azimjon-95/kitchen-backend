@@ -15,6 +15,20 @@ services:
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+      - key: APP_ORIGIN
+        sync: false            # https://ваш-клиент.vercel.app (тот же, что CLIENT_ORIGIN)
+      - key: SUPER_ADMIN_EMAIL
+        sync: false
+      - key: SUPER_ADMIN_PASSWORD
+        sync: false
+      - key: LEGACY_API
+        value: "off"
       - key: CLIENT_ORIGIN
         sync: false            # https://ваш-клиент.vercel.app
       - key: ADMIN_ORIGIN
