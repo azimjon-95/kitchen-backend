@@ -14,7 +14,9 @@ const KEY = process.env.STT_API_KEY;
 const URL_ = process.env.STT_API_URL ?? "https://api.groq.com/openai/v1/audio/transcriptions";
 const MODEL = process.env.STT_MODEL ?? "whisper-large-v3";
 /** GigaAM (services/stt-gigaam): основной движок для русского, если задан. Whisper — запасной. */
-const GIGAAM_URL = process.env.GIGAAM_URL?.replace(/\/$/, "");
+const GIGAAM_RAW = process.env.GIGAAM_URL?.trim().replace(/\/$/, "");
+// Render отдаёт адрес приватного сервиса как host:port — добавляем схему
+const GIGAAM_URL = GIGAAM_RAW ? (/^https?:\/\//.test(GIGAAM_RAW) ? GIGAAM_RAW : `http://${GIGAAM_RAW}`) : undefined;
 const GIGAAM_TOKEN = process.env.STT_SERVICE_TOKEN ?? "";
 const ENABLED = !!GIGAAM_URL || !!KEY;
 
