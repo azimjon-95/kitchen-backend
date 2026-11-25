@@ -11,7 +11,7 @@ const r = Router();
 r.use(authenticate, requireSuperAdmin);
 
 const slugRe = /^[a-z0-9][a-z0-9-]{1,38}[a-z0-9]$/;
-const ownerSchema = z.object({ email: z.string().email().max(200), name: z.string().trim().min(2).max(100), password: z.string().max(200) });
+const ownerSchema = z.object({ email: z.string().trim().min(2).max(200).regex(/^[^\s@]+(@[^\s@]+\.[^\s@]+)?$/, "Неверный логин"), name: z.string().trim().min(2).max(100), password: z.string().max(200) });
 const restSchema = z.object({
   name: z.string().trim().min(2).max(120), organization: z.string().trim().min(2).max(120), slug: z.string().toLowerCase().regex(slugRe, "slug: a-z, 0-9, дефис"),
   address: z.string().max(300).optional().default(""),

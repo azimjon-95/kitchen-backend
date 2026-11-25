@@ -106,7 +106,7 @@ async function loadTargetRole(t: TenantCtx, roleId: string) {
 const dateOrNull = z.string().datetime().nullable().optional();
 
 r.post("/members", can("members", "create"), validate(z.object({
-  email: z.string().email().max(200), name: z.string().trim().min(2).max(100), password: z.string().max(200), roleId: z.string().length(24),
+  email: z.string().trim().min(2).max(200).regex(/^[^\s@]+(@[^\s@]+\.[^\s@]+)?$/, "Неверный логин"), name: z.string().trim().min(2).max(100), password: z.string().max(200), roleId: z.string().length(24),
   assigned: assignedSchema.optional().default({}), accessFrom: dateOrNull, accessUntil: dateOrNull
 })), wrap(async (req, res) => {
   const d = req.data; const t: TenantCtx = req.tenant;

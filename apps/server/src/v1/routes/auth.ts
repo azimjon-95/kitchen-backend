@@ -10,7 +10,7 @@ import { audit } from "../audit.js";
 const r = Router();
 const MAX_FAILS = 5, LOCK_MS = 15 * 60 * 1000, GRACE_MS = 10_000;
 
-r.post("/login", validate(z.object({ email: z.string().email().max(200), password: z.string().min(1).max(200) })), wrap(async (req, res) => {
+r.post("/login", validate(z.object({ email: z.string().trim().min(2).max(200).regex(/^[^\s@]+(@[^\s@]+\.[^\s@]+)?$/, "Неверный логин"), password: z.string().min(1).max(200) })), wrap(async (req, res) => {
   const { email, password } = req.data;
   const user = await PlatformUser.findOne({ email: email.toLowerCase() }).select("+passwordHash");
   if (!user) { await dummyVerify(password); throw new HttpError(401, "Неверный email или пароль", "bad_credentials"); }
@@ -98,7 +98,7 @@ r.post("/password/change", authenticate, validate(z.object({ currentPassword: z.
 }));
 
 // Восстановление пароля: ответ всегда одинаковый (не раскрываем, существует ли email). Токен одноразовый, 30 минут.
-r.post("/password/forgot", validate(z.object({ email: z.string().email().max(200) })), wrap(async (req, res) => {
+r.post("/password/forgot", validate(z.object({ email: z.string().trim().min(2).max(200).regex(/^[^\s@]+(@[^\s@]+\.[^\s@]+)?$/, "Неверный логин") })), wrap(async (req, res) => {
   const u = await PlatformUser.findOne({ email: req.data.email.toLowerCase(), status: "active" });
   const out: any = { ok: true };
   if (u) {
