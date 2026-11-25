@@ -13,8 +13,23 @@ const router = Router();
 const KEY = process.env.STT_API_KEY;
 const URL_ = process.env.STT_API_URL ?? "https://api.groq.com/openai/v1/audio/transcriptions";
 const MODEL = process.env.STT_MODEL ?? "whisper-large-v3";
+/** GigaAM (services/stt-gigaam): основной движок для русского, если задан. Whisper — запасной. */
+const GIGAAM_URL = process.env.GIGAAM_URL?.replace(/\/$/, "");
+const GIGAAM_TOKEN = process.env.STT_SERVICE_TOKEN ?? "";
+const ENABLED = !!GIGAAM_URL || !!KEY;
 
-router.get("/status", (_req, res) => res.json({ enabled: !!KEY, model: KEY ? MODEL : null }));
+router.get("/status", (_req, res) => res.json({ enabled: ENABLED, model: GIGAAM_URL ? "gigaam" : KEY ? MODEL : null, fallback: !!(GIGAAM_URL && KEY) }));
+
+async function viaGigaAM(buf: Buffer): Promise<string> {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 8_000);
+  try {
+    const r = await fetch(`${GIGAAM_URL}/transcribe`, { method: "POST", headers: { "Content-Type": "audio/wav", "X-STT-Token": GIGAAM_TOKEN }, body: new Uint8Array(buf), signal: ctrl.signal });
+    if (!r.ok) throw new Error(`gigaam ${r.status}`);
+    const j: any = await r.json();
+    return String(j.text ?? "").trim();
+  } finally { clearTimeout(t); }
+}
 
 /** Типичные «галлюцинации» Whisper на тишине/шуме — отбрасываем */
 const HALLUCINATIONS = [
@@ -47,7 +62,7 @@ async function vocabulary(): Promise<string> {
 }
 
 router.post("/transcribe", express.raw({ type: ["audio/wav", "audio/x-wav", "application/octet-stream"], limit: "2mb" }), async (req, res) => {
-  if (!KEY) return res.status(503).json({ error: "Серверное распознавание не настроено" });
+  if (!ENABLED) return res.status(503).json({ error: "Серверное распознавание не настроено" });
   const buf = req.body as Buffer;
   const info = Buffer.isBuffer(buf) ? wavInfo(buf) : { ok: false, rate: 0, samples: 0 };
   if (!info.ok) return res.status(400).json({ error: "Нужен WAV PCM16 моно" });
@@ -57,8 +72,19 @@ router.post("/transcribe", express.raw({ type: ["audio/wav", "audio/x-wav", "app
   // тишина/шум без речи не отправляется провайдеру — так не появляются выдуманные фразы
   if (rmsDb(buf) < -55) return res.json({ text: "", reason: "silence" });
 
+  const lang = String(req.query.lang ?? "ru").slice(0, 2);
+  // GigaAM обучен на русском: используем его для ru, при сбое — Whisper (если задан ключ)
+  if (GIGAAM_URL && lang !== "uz") {
+    try {
+      const text = await viaGigaAM(buf);
+      return res.json({ text, alternatives: [], engine: "gigaam", reason: text ? undefined : "no-speech" });
+    } catch (e: any) {
+      console.error("voice/gigaam", e?.message);
+      if (!KEY) return res.status(502).json({ error: "Сервис распознавания недоступен" });
+    }
+  }
+  if (!KEY) return res.status(503).json({ error: "Распознавание для этого языка не настроено" });
   try {
-    const lang = String(req.query.lang ?? "ru").slice(0, 2);
     const form = new FormData();
     form.append("file", new Blob([new Uint8Array(buf)], { type: "audio/wav" }), "voice.wav");
     form.append("model", MODEL);
@@ -80,7 +106,7 @@ router.post("/transcribe", express.raw({ type: ["audio/wav", "audio/x-wav", "app
     const segs: any[] = Array.isArray(j.segments) ? j.segments : [];
     if (segs.length && segs.every((s) => (s.no_speech_prob ?? 0) > 0.6)) text = "";
     if (HALLUCINATIONS.some((re) => re.test(text))) text = "";
-    res.json({ text, alternatives: [], reason: text ? undefined : "no-speech" });
+    res.json({ text, alternatives: [], engine: "whisper", reason: text ? undefined : "no-speech" });
   } catch (e: any) {
     console.error("voice/transcribe", e?.message);
     res.status(502).json({ error: "Не удалось распознать" });

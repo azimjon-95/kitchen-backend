@@ -5,6 +5,12 @@ services:
   redis:
     image: redis:7-alpine
     command: ["redis-server", "--save", "", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+  stt:
+    build: ./services/stt-gigaam      # GigaAM, первая сборка скачивает torch и модель (~2 ГБ)
+    environment:
+      STT_SERVICE_TOKEN: ${STT_SERVICE_TOKEN:-local-dev-token}
+      GIGAAM_MODEL: ${GIGAAM_MODEL:-v3_e2e_rnnt}
+    mem_limit: 3g
   api:
     build: .
     ports: ["4000:4000"]
@@ -12,6 +18,8 @@ services:
     environment:
       MONGODB_URI: mongodb://mongo:27017/clean-kitchen
       REDIS_URL: redis://redis:6379
-    depends_on: [mongo, redis]
+      GIGAAM_URL: http://stt:8000
+      STT_SERVICE_TOKEN: ${STT_SERVICE_TOKEN:-local-dev-token}
+    depends_on: [mongo, redis, stt]
 volumes:
   mongo:

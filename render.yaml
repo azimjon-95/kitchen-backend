@@ -1,5 +1,16 @@
 # Render Blueprint: https://render.com → New → Blueprint → этот репозиторий
 services:
+  # Распознавание речи GigaAM (CPU). Нужен план с ≥ 2 ГБ памяти (Standard); на free/starter модель не поместится.
+  - type: pserv
+    name: clean-kitchen-stt
+    runtime: docker
+    rootDir: services/stt-gigaam
+    plan: standard
+    envVars:
+      - key: STT_SERVICE_TOKEN
+        generateValue: true
+      - key: GIGAAM_MODEL
+        value: v3_e2e_rnnt
   - type: web
     name: clean-kitchen-api
     runtime: docker
@@ -15,6 +26,16 @@ services:
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
+      - key: GIGAAM_URL        # внутренний адрес сервиса распознавания GigaAM (http://host:port)
+        fromService:
+          type: pserv
+          name: clean-kitchen-stt
+          property: hostport
+      - key: STT_SERVICE_TOKEN
+        fromService:
+          type: pserv
+          name: clean-kitchen-stt
+          envVarKey: STT_SERVICE_TOKEN
       - key: JWT_ACCESS_SECRET
         generateValue: true
       - key: JWT_REFRESH_SECRET
