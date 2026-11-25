@@ -17,11 +17,12 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 MODEL_NAME = os.getenv("GIGAAM_MODEL", "v3_e2e_rnnt")       # v3_e2e_ctc — быстрее, v3_e2e_rnnt — точнее
 DEVICE = os.getenv("GIGAAM_DEVICE") or ("cuda" if torch.cuda.is_available() else "cpu")
 TOKEN = os.getenv("STT_SERVICE_TOKEN", "")                  # общий секрет с backend (заголовок X-STT-Token)
-THREADS = int(os.getenv("TORCH_THREADS", "0")) or max(1, os.cpu_count() or 1)
+THREADS = int(os.getenv("TORCH_THREADS", "0")) or min(4, max(1, os.cpu_count() or 1))
 SR = 16000
 MAX_SEC = 25.0
 
 torch.set_num_threads(THREADS)
+torch.set_num_interop_threads(1)
 _lock = threading.Lock()   # одна модель — один поток инференса; запросы ждут очереди (они короткие)
 _model = None
 
@@ -37,6 +38,10 @@ def load():
     import gigaam
     t = time.time()
     _model = gigaam.load_model(MODEL_NAME, device=DEVICE, download_root=os.getenv("GIGAAM_CACHE"))
+    if os.getenv("GIGAAM_INT8") == "1" and DEVICE == "cpu":
+        # int8-квантизация линейных слоёв: ~1.5–2× быстрее на CPU и меньше памяти; точность может немного снизиться
+        _model = torch.ao.quantization.quantize_dynamic(_model, {torch.nn.Linear}, dtype=torch.qint8)
+        log.info("int8 dynamic quantization enabled")
     log.info("model %s loaded on %s in %.1fs (threads=%d)", MODEL_NAME, DEVICE, time.time() - t, THREADS)
     _infer(np.zeros(SR, dtype=np.float32))   # прогрев: первый запрос пользователя не платит за JIT/аллокации
 

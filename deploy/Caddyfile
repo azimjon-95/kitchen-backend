@@ -1,0 +1,44 @@
+{
+	# реальный IP клиента, если перед Caddy стоит ваш nginx на этом же сервере
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+{$SITE_ADDRESS} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "same-origin"
+		Permissions-Policy "camera=(self), microphone=(self), geolocation=()"
+		Content-Security-Policy "default-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+		-Server
+	}
+
+	# API: без кэширования, длинный keep-alive
+	handle /api/* {
+		header Cache-Control "no-store"
+		reverse_proxy api:4000 {
+			transport http {
+				keepalive 90s
+			}
+			health_uri /api/health
+			health_interval 15s
+			lb_try_duration 5s
+		}
+	}
+
+	# Сборка Vite: файлы с хэшем — кэш навсегда; index.html и sw.js — всегда свежие
+	handle {
+		root * /srv
+		@immutable path /assets/*
+		header @immutable Cache-Control "public, max-age=31536000, immutable"
+		@fresh path /index.html /sw.js /manifest.webmanifest /
+		header @fresh Cache-Control "no-cache"
+		try_files {path} /index.html
+		file_server
+	}
+}

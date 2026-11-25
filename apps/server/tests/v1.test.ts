@@ -385,3 +385,19 @@ describe("Прочее", () => {
     assert.equal((await api("GET", "/auth/me", { token: o.token })).status, 401);
   });
 });
+
+describe("Защита техкарт от выкачивания", () => {
+  it("сотрудник упирается в лимит полной выгрузки, владелец — нет; событие в журнале", async () => {
+    const { _resetGuard } = await import("../src/v1/guard.js"); _resetGuard();
+    const c = await login("cook@test.dev", S.cookPw);
+    let last = 0;
+    for (let i = 0; i < 31; i++) last = (await api("GET", "/recipes?full=1", { token: c.token })).status;
+    assert.equal(last, 429);
+    assert.equal((await api("GET", "/recipes?full=1", { token: c.token })).json.code, "read_limit");
+    const o = await login("owner-a@test.dev");
+    for (let i = 0; i < 35; i++) assert.equal((await api("GET", "/recipes?full=1", { token: o.token })).status, 200);
+    const logs = (await api("GET", "/audit-logs?action=recipe.scrape_suspected", { token: o.token })).json.items;
+    assert.equal(logs.length, 1);
+    assert.equal((await api("GET", "/recipes", { token: c.token })).status, 200, "лёгкий список без содержимого не ограничен");
+  });
+});

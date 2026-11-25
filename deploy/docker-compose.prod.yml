@@ -1,0 +1,95 @@
+# Clean Kitchen — продакшен на одном VPS. Запускается скриптом deploy/install.sh.
+# Наружу открыт только web (Caddy: HTTPS + сайт + /api). Всё остальное — во внутренних сетях.
+name: clean-kitchen
+
+x-common: &common
+  restart: unless-stopped
+  logging: { driver: json-file, options: { max-size: "10m", max-file: "3" } }
+  security_opt: ["no-new-privileges:true"]
+
+networks:
+  edge: {}                       # web ↔ api (+ выход api в интернет для резервного Whisper)
+  data: { internal: true }       # api ↔ mongo/redis, без интернета
+  speech: { internal: true }     # api ↔ stt, без интернета: модель не может ничего отправить наружу
+
+volumes:
+  mongo: {}
+  caddy_data: {}
+  caddy_config: {}
+
+services:
+  mongo:
+    <<: *common
+    image: mongo:7
+    command: ["--wiredTigerCacheSizeGB", "0.4", "--quiet"]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes: ["mongo:/data/db", "${BACKUP_DIR:-/opt/clean-kitchen/backups}:/backups"]
+    networks: [data]
+    mem_limit: 900m
+    healthcheck: { test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"], interval: 30s, timeout: 5s, retries: 5 }
+
+  redis:
+    <<: *common
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "96mb", "--maxmemory-policy", "allkeys-lru", "--requirepass", "${REDIS_PASSWORD}"]
+    networks: [data]
+    mem_limit: 160m
+
+  stt:
+    <<: *common
+    build: { context: ../services/stt-gigaam, args: { GIGAAM_MODEL: "${GIGAAM_MODEL:-v3_e2e_rnnt}" } }
+    environment:
+      STT_SERVICE_TOKEN: ${STT_SERVICE_TOKEN}
+      GIGAAM_MODEL: ${GIGAAM_MODEL:-v3_e2e_rnnt}
+      GIGAAM_INT8: ${GIGAAM_INT8:-0}
+      TORCH_THREADS: ${STT_THREADS:-2}
+    networks: [speech]
+    read_only: true
+    tmpfs: ["/tmp:size=64m"]
+    cap_drop: [ALL]
+    cpus: ${STT_CPUS:-2}
+    mem_limit: ${STT_MEMORY:-3g}
+    pids_limit: 128
+
+  api:
+    <<: *common
+    build: { context: .. }
+    env_file: ../.env
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongo:27017/clean-kitchen?authSource=admin
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379
+      GIGAAM_URL: http://stt:8000
+      LEGACY_API: "off"
+      VOICE_REQUIRE_AUTH: "1"
+      COOKIE_SAMESITE: lax
+      PORT: "4000"
+    depends_on:
+      mongo: { condition: service_healthy }
+      redis: { condition: service_started }
+      stt: { condition: service_started }
+    networks: [edge, data, speech]
+    read_only: true
+    tmpfs: ["/tmp:size=32m", "/app/uploads:size=64m,uid=1000,gid=1000"]
+    cap_drop: [ALL]
+    cpus: 1
+    mem_limit: 600m
+    pids_limit: 256
+
+  web:
+    <<: *common
+    build:
+      context: ${CLIENT_DIR:-../../client}
+      args: { VITE_API_URL: "", VITE_ALLOW_GUEST: "false" }
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    ports: ["${HTTP_BIND:-80}:80", "${HTTPS_BIND:-443}:443"]
+    depends_on: [api]
+    networks: [edge]
+    mem_limit: 200m

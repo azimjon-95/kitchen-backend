@@ -4,6 +4,7 @@ import { TCategory, TIngredient, TRecipe, TRecipeVersion, ImportJob, AuditLog, M
 import { HttpError, authenticate, tenant, can, validate, wrap, oidParam, recipeScope, categoryScope, type TenantCtx } from "../middleware.js";
 import { hasPerm, ZONES } from "../permissions.js";
 import { audit } from "../audit.js";
+import { recipeReadGuard } from "../guard.js";
 import { fmtAudit } from "./platform.js";
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -107,7 +108,7 @@ function checkStatus(t: TenantCtx, from: string | null, to: string) {
   if (to === "archived" && !hasPerm(t.perms, "recipes", "archive")) throw new HttpError(403, "Нет права архивирования", "forbidden");
 }
 
-recipes.get("/", can("recipes", "view"), wrap(async (req, res) => {
+recipes.get("/", can("recipes", "view"), recipeReadGuard((q) => (q.full === "1" ? "full" : null)), wrap(async (req, res) => {
   const t: TenantCtx = req.tenant; const q: any = recipeScope(t);
   const f = req.query as any;
   if (f.q) q.name = new RegExp(esc(String(f.q).slice(0, 60)), "i");
@@ -118,13 +119,13 @@ recipes.get("/", can("recipes", "view"), wrap(async (req, res) => {
   const [items, total] = await Promise.all([TRecipe.find(q).sort({ updatedAt: -1 }).skip(skip).limit(limit).lean<any[]>(), TRecipe.countDocuments(q)]);
   res.json({ items: items.map((x) => recipeDto(x, t, f.full === "1")), total });
 }));
-recipes.get("/export", can("recipes", "export"), wrap(async (req, res) => {
+recipes.get("/export", can("recipes", "export"), recipeReadGuard("export"), wrap(async (req, res) => {
   const items = await TRecipe.find(recipeScope(req.tenant)).sort({ name: 1 }).limit(2000).lean<any[]>();
   await audit(req, { action: "recipe.exported", entity: "recipe", after: { count: items.length } });
   res.json({ items: items.map((x) => recipeDto(x, req.tenant)) });
 }));
 // повторная серверная проверка доступа при открытии карточки: недоступная карточка → 404 (существование не раскрывается)
-recipes.get("/:id", oidParam(), can("recipes", "view"), wrap(async (req, res) => {
+recipes.get("/:id", oidParam(), can("recipes", "view"), recipeReadGuard("one"), wrap(async (req, res) => {
   const x = await TRecipe.findOne({ ...recipeScope(req.tenant), _id: req.params.id }).lean<any>(); if (!x) throw new HttpError(404, "Карточка не найдена", "not_found");
   res.json({ item: recipeDto(x, req.tenant) });
 }));

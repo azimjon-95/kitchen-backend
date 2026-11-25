@@ -18,6 +18,8 @@ import { RedisStore } from "rate-limit-redis";
 import { buildV1, errorHandler as v1Errors } from "./v1/index.js";
 import { bootstrapSuperAdmin } from "./v1/bootstrap.js";
 import { assertSecrets, cfg } from "./v1/security.js";
+import { authenticate as v1Authenticate } from "./v1/middleware.js";
+import mongooseLib from "mongoose";
 
 // сбой Redis/сети не должен валить сервер
 process.on("unhandledRejection", (e) => console.error("Unhandled rejection:", e));
@@ -31,7 +33,8 @@ const allowedOrigins = (process.env.CLIENT_ORIGIN ?? "http://localhost:5173").sp
   .concat(["capacitor://localhost", "ionic://localhost", "http://localhost", "https://localhost"]);
 
 app.disable("x-powered-by");
-app.set("trust proxy", 1); // за прокси (Render/Railway/nginx) — корректный IP для rate-limit
+app.disable("x-powered-by");
+app.set("trust proxy", Number(process.env.TRUST_PROXY ?? 1)); // за прокси (Render/Railway/nginx) — корректный IP для rate-limit
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json({ limit: "4mb" }));
 const limiterStore = (prefix: string) => redis
@@ -71,7 +74,9 @@ if (process.env.LEGACY_API !== "off") {
 }
 app.use("/api/ocr", ocrRoutes);
 app.use("/api/voice/transcribe", rateLimit({ windowMs: 60 * 1000, limit: 30, standardHeaders: true, legacyHeaders: false, passOnStoreError: true, ...limiterStore("voice") }));
-app.use("/api/voice", voiceRoutes);
+// В продакшене распознавание доступно только вошедшим (защита CPU сервера от чужих запросов)
+if (process.env.VOICE_REQUIRE_AUTH === "1") app.use("/api/voice/transcribe", v1Authenticate);
+app.use("/api/voice", voiceRoutes, v1Errors);
 
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);
@@ -110,7 +115,21 @@ async function start() {
     }
   }
 
-  app.listen(port, "0.0.0.0", () => console.log(`Clean Kitchen API listening on http://localhost:${port}`));
+  const server = app.listen(port, "0.0.0.0", () => console.log(`Clean Kitchen API listening on http://localhost:${port}`));
+  // Keep-alive дольше, чем у прокси (Caddy/nginx ~60 c) — иначе редкие 502 на переиспользованном соединении
+  server.keepAliveTimeout = 65_000;
+  server.headersTimeout = 66_000;
+  server.requestTimeout = 60_000;
+  // Плавная остановка при обновлении: дождаться текущих запросов, затем закрыть БД
+  let stopping = false;
+  const shutdown = (sig: string) => {
+    if (stopping) return; stopping = true;
+    console.log(`${sig}: остановка…`);
+    server.close(async () => { await mongooseLib.disconnect().catch(() => {}); process.exit(0); });
+    setTimeout(() => process.exit(0), 10_000).unref();
+  };
+  process.on("SIGTERM", () => shutdown("SIGTERM"));
+  process.on("SIGINT", () => shutdown("SIGINT"));
 }
 
 start().catch(error => {
