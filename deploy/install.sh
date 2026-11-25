@@ -6,20 +6,21 @@
 #
 # Без домена: сайт получит адрес вида 1-2-3-4.sslip.io с настоящим HTTPS.
 # Повторный запуск = обновление (git pull + пересборка); пароли и данные сохраняются.
-# Опции: --domain D  --admin-email E  --git-token T (для приватных репозиториев)  --int8 (быстрее, чуть менее точно)
+# Опции: --extra-origin https://x.vercel.app (фронтенд на Vercel)  --domain D  --admin-email E  --git-token T (для приватных репозиториев)  --int8 (быстрее, чуть менее точно)
 # ─────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
 ROOT=/opt/clean-kitchen
 BACKEND_REPO=https://github.com/azimjon-95/kitchen-backend.git
 CLIENT_REPO=https://github.com/azimjon-95/clean-kitchen.git
-DOMAIN="" ADMIN_EMAIL="" GIT_TOKEN="${GIT_TOKEN:-}" INT8=0
+DOMAIN="" ADMIN_EMAIL="" GIT_TOKEN="${GIT_TOKEN:-}" INT8=0 EXTRA_ORIGIN=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --domain) DOMAIN="$2"; shift 2 ;;
     --admin-email) ADMIN_EMAIL="$2"; shift 2 ;;
     --git-token) GIT_TOKEN="$2"; shift 2 ;;
     --int8) INT8=1; shift ;;
+    --extra-origin) EXTRA_ORIGIN="$2"; shift 2 ;;   # сайт на другом домене (например, Vercel), которому разрешён доступ к API
     *) echo "Неизвестный параметр: $1"; exit 1 ;;
   esac
 done
@@ -94,10 +95,15 @@ ENV
   printf 'Сайт: https://%s\nSuper Admin: %s\nПароль: %s\n(смените пароль после входа)\n' "$DOMAIN" "$SA_EMAIL" "$SA_PASS" > "$ROOT/CREDENTIALS.txt"
   chmod 600 "$ROOT/CREDENTIALS.txt"
 else
-  sed -i "s#^SITE_DOMAIN=.*#SITE_DOMAIN=$DOMAIN#; s#^APP_ORIGIN=.*#APP_ORIGIN=https://$DOMAIN#; s#^CLIENT_ORIGIN=.*#CLIENT_ORIGIN=https://$DOMAIN#" .env
+  sed -i "s#^SITE_DOMAIN=.*#SITE_DOMAIN=$DOMAIN#" .env
   [ "$INT8" = 1 ] && sed -i 's#^GIGAAM_INT8=.*#GIGAAM_INT8=1#' .env
 fi
 chmod 600 .env
+# Разрешённые адреса сайта: свой домен + (необязательно) фронтенд на другом домене
+[ -z "$EXTRA_ORIGIN" ] && EXTRA_ORIGIN=$(grep -E '^EXTRA_ORIGIN=' .env | cut -d= -f2- || true)
+ORIGINS="https://$DOMAIN${EXTRA_ORIGIN:+,${EXTRA_ORIGIN%/}}"
+sed -i '/^APP_ORIGIN=/d; /^CLIENT_ORIGIN=/d; /^EXTRA_ORIGIN=/d' .env
+printf 'APP_ORIGIN=%s\nCLIENT_ORIGIN=%s\nEXTRA_ORIGIN=%s\n' "$ORIGINS" "$ORIGINS" "${EXTRA_ORIGIN%/}" >> .env
 
 # Параметры запуска compose (не секретные)
 {
@@ -107,6 +113,8 @@ chmod 600 .env
     echo "SITE_ADDRESS=$DOMAIN"; echo "HTTP_BIND=80"; echo "HTTPS_BIND=443"
   fi
   echo "CLIENT_DIR=$ROOT/client"; echo "BACKUP_DIR=$ROOT/backups"
+  # фронтенд на чужом домене (Vercel) → cookie должна быть кросс-сайтовой
+  if [ -n "$EXTRA_ORIGIN" ]; then echo "COOKIE_SAMESITE=none"; else echo "COOKIE_SAMESITE=lax"; fi
   CPUS=$(nproc); echo "STT_CPUS=$(( CPUS > 2 ? 2 : CPUS ))"; echo "STT_THREADS=$(( CPUS > 2 ? 2 : CPUS ))"
 } > deploy/runtime.env
 cat .env deploy/runtime.env > deploy/.compose.env; chmod 600 deploy/.compose.env

@@ -64,7 +64,7 @@ services:
       GIGAAM_URL: http://stt:8000
       LEGACY_API: "off"
       VOICE_REQUIRE_AUTH: "1"
-      COOKIE_SAMESITE: lax
+      COOKIE_SAMESITE: ${COOKIE_SAMESITE:-lax}
       PORT: "4000"
     depends_on:
       mongo: { condition: service_healthy }
